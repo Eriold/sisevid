@@ -1,4 +1,11 @@
 <?php
+
+// Start global page
+global $activeHeader;
+$activeHeader = '_HOME';
+global $titleDocument;
+$titleDocument = 'Página de inicio';
+
 include('./view/components/head.php');
 include('./view/components/header.php');
 

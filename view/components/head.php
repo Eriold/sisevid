@@ -1,4 +1,6 @@
 <?php
+global $titleDocument;
+
 $segments = isset($_SERVER['PHP_SELF']) ? $_SERVER['PHP_SELF'] : '';
 // Print slashes
 $res = preg_replace('/[a-z,.]/', '', $segments);
@@ -14,7 +16,7 @@ if (count($testArray) > 3) {
 
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard</title>
+    <title><?php echo $titleDocument ?></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>

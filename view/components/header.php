@@ -10,6 +10,54 @@ if (count($testArray) > 3) {
     $load = '../' . $load;
   }
 }
+global $activeHeader;
+
+$home = $create = $read = $delete = $update = '';
+
+switch ($activeHeader) {
+  case '_HOME':
+    $home = '';
+    $create = '';
+    $read = '';
+    $delete = '';
+    $update = '';
+    break;
+  case '_CREATE':
+    $home = '';
+    $create = 'active';
+    $read = '';
+    $delete = '';
+    $update = '';
+    break;
+    break;
+  case '_READ':
+    $home = '';
+    $create = '';
+    $read = 'active';
+    $delete = '';
+    $update = '';
+    break;
+  case '_DELETE':
+    $home = '';
+    $create = '';
+    $read = '';
+    $delete = 'active';
+    $update = '';
+    break;
+  case '_UPDATE':
+    $home = '';
+    $create = '';
+    $read = '';
+    $delete = '';
+    $update = 'active';
+    break;
+  default:
+    $home = '';
+    $create = '';
+    $read = '';
+    $delete = '';
+    $update = '';
+}
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -20,16 +68,16 @@ if (count($testArray) > 3) {
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
-      <li class="nav-item active">
+      <li class="nav-item <?php echo $create ?>">
         <a class="nav-link" href="<?php echo $load ?>view/evidence/create.php">Crear <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item <?php echo $read ?>">
         <a class="nav-link" href="<?php echo $load ?>view/evidence/read.php">Leer</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item <?php echo $update ?>">
         <a class="nav-link" href="<?php echo $load ?>view/evidence/update.php">Actualizar</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item <?php echo $delete ?>">
         <a class="nav-link" href="<?php echo $load ?>view/evidence/delete.php">Borrar</a>
       </li>
       <!-- <li class="nav-item">
