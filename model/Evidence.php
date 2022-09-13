@@ -2,13 +2,16 @@
 {
     private string $nameEvidence;
     private string $idArticle;
+    private string $idEvidencias;
 
     public function __construct(
         string $NameEvidence,
-        string $IdArticle
+        string $IdArticle,
+        string $IdEvidencias
     ) {
         $this->nameEvidence = $NameEvidence;
         $this->idArticle = $IdArticle;
+        $this->idEvidencias = $IdEvidencias;
     }
     /**
      * Get the value of nameEvidence
@@ -48,5 +51,25 @@
         $this->idArticle = $idArticle;
 
         return $this;
+    }
+
+    /**
+     * Set the value of idEvidencias
+     *
+     * @return  self
+     */
+    public function setIdEvidencias($idEvidencias)
+    {
+        $this->idEvidencias = $idEvidencias;
+
+        return $this;
+    }
+
+     /**
+     * Get the value of idEvidencias
+     */
+    public function getIdEvidencias()
+    {
+        return $this->idEvidencias;
     }
 }

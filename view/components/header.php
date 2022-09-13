@@ -69,16 +69,16 @@ switch ($activeHeader) {
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item <?php echo $create ?>">
-        <a class="nav-link" href="<?php echo $load ?>view/evidence/create.php">Crear <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="<?php echo $load ?>view/school/create.php">Crear <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item <?php echo $read ?>">
-        <a class="nav-link" href="<?php echo $load ?>view/evidence/read.php">Leer</a>
+        <a class="nav-link" href="<?php echo $load ?>view/school/read.php">Leer</a>
       </li>
       <li class="nav-item <?php echo $update ?>">
-        <a class="nav-link" href="<?php echo $load ?>view/evidence/update.php">Actualizar</a>
+        <a class="nav-link" href="<?php echo $load ?>view/school/update.php">Actualizar</a>
       </li>
       <li class="nav-item <?php echo $delete ?>">
-        <a class="nav-link" href="<?php echo $load ?>view/evidence/delete.php">Borrar</a>
+        <a class="nav-link" href="<?php echo $load ?>view/school/delete.php">Borrar</a>
       </li>
       <!-- <li class="nav-item">
         <a class="nav-link disabled" href="#">Disabled</a>
