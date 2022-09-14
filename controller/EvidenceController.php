@@ -1,5 +1,4 @@
 <?php
-include('./server.php');
 class EvidenceController
 {
     var $ojbEvidence;
@@ -55,9 +54,5 @@ class EvidenceController
 
     public function consult()
     {
-
-
-
     }
-
 }

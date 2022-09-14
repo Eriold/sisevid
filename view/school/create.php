@@ -1,6 +1,8 @@
 <?php
-include('../../controller/SchoolController.php');
 include('../../model/School.php');
+include('../../controller/ConnectionController.php');
+include('../../controller/SchoolController.php');
+include('../../controller/server.php');
 
 global $activeHeader;
 $activeHeader = '_CREATE';
@@ -9,39 +11,39 @@ $titleDocument = 'Página de guardado';
 $schoolCode = $schoolName = $schoolDean = $schoolIES = "";
 $schoolCode_error = $schoolName_error  = $schoolDean_error  = $schoolIES_error = "";
 
-if($_SERVER["REQUEST_METHOD"]=="POST"){
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //validate input
     $inputSchoolCode = trim($_POST["txtSchoolCode"]);
-    if(empty($inputSchoolCode)){
-        $schoolCode_error = "Debe ingresar un Codigo"; 
-    }else{
+    if (empty($inputSchoolCode)) {
+        $schoolCode_error = "Debe ingresar un Codigo";
+    } else {
         $schoolCode = $inputSchoolCode;
     }
     $inputSchoolName = trim($_POST["txtSchoolName"]);
-    if(empty($inputSchoolName)){
-        $schoolName_error = "Debe ingresar un Nombre para la facultad"; 
-    }else{
+    if (empty($inputSchoolName)) {
+        $schoolName_error = "Debe ingresar un Nombre para la facultad";
+    } else {
         $schoolName = $inputSchoolName;
     }
     $inputSchoolDean = trim($_POST["txtSchoolDean"]);
-    if(empty($inputSchoolDean)){
-        $schoolDean_error = "Debe ingresar el nombre del decano"; 
-    }else{
+    if (empty($inputSchoolDean)) {
+        $schoolDean_error = "Debe ingresar el nombre del decano";
+    } else {
         $schoolDean = $inputSchoolDean;
     }
     $inputSchoolIES = trim($_POST["txtSchoolIES"]);
-    if(empty($inputSchoolIES)){
-        $schoolIES_error = "Debe ingresar el nombre IES"; 
-    }else{
+    if (empty($inputSchoolIES)) {
+        $schoolIES_error = "Debe ingresar el nombre IES";
+    } else {
         $schoolIES = $inputSchoolIES;
     }
 
     //check input error is empty to insert
-    if(empty($schoolCode_error)&& empty($schoolName_error)&& empty($schoolDean_error)&& empty($schoolIES_error)){
-        $objSchool = new School("","","","");
+    if (empty($schoolCode_error) && empty($schoolName_error) && empty($schoolDean_error) && empty($schoolIES_error)) {
+        $objSchool = new School($schoolCode, $schoolName, $schoolDean, $schoolIES);
         $objSchoolConnetion = new SchoolController($objSchool);
         $objSchoolConnetion->create();
-        
+        header("location: ../../index.php");
     }
 }
 ?>

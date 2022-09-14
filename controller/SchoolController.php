@@ -14,10 +14,9 @@ class SchoolController{
         $schoolName = $this->objSchool->getSchoolName();
         $schoolDean = $this->objSchool->getSchoolDean();
         $schoolIES = $this->objSchool->getSchoolIES();
-        $query = "INSERT INTO Facultades (Nombre, Decano, Ies_nombre)VALUES('Facultad de ingenierías','Alfonso Pérez Márquez','Pascual Bravo');";
-        // $query = "INSERT INTO evidencias VALUES ($nameEvidence, $idArticle)";
+        $query = "INSERT INTO Facultades (Nombre, Decano, Ies_nombre)VALUES('$schoolName','$schoolDean','$schoolIES')";
         $objSchoolController = new ConnectionController();
-        $objSchoolController->openDataBase("localhost", "root", "", "sisevid");
+        $objSchoolController->openDataBase(LOCALHOST, USER, PASSWORD, DATABASE);
         $objSchoolController->runCommandSQL($query);
         $objSchoolController->closeDataBase();
     }
