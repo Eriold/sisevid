@@ -1,5 +1,5 @@
 <?php
-//include_once('./server.php');
+
 class SchoolController{
 
     var $objSchool;
@@ -20,7 +20,15 @@ class SchoolController{
         $objSchoolController->runCommandSQL($query);
         $objSchoolController->closeDataBase();
     }
-    public function read(){
+    public function readAll(){
+
+        $query = "SELECT * FROM facultades";
+        $objSchoolController = new ConnectionController();
+        $objSchoolController->openDataBase(LOCALHOST, USER, PASSWORD, DATABASE);
+        $res = $objSchoolController->runSelect($query);
+        $row = $res->fetch_all(MYSQLI_ASSOC);
+        $objSchoolController->closeDataBase();
+        return $row;
 
     }
     public function update(){
@@ -28,6 +36,13 @@ class SchoolController{
     }
     public function delete(){
 
+        $schoolCode = $this->objSchool->getSchoolCode();
+        $query = "DELETE FROM facultades WHERE Idfacultades ='$schoolCode'";
+        $objSchoolController = new ConnectionController();
+        $objSchoolController->openDataBase(LOCALHOST, USER, PASSWORD, DATABASE);
+        $objSchoolController->runCommandSQL($query);
+        $objSchoolController->closeDataBase();
+        
     }
 
     
