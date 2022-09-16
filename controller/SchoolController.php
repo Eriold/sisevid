@@ -1,6 +1,7 @@
 <?php
 
-class SchoolController{
+class SchoolController
+{
 
     var $objSchool;
 
@@ -9,7 +10,8 @@ class SchoolController{
         $this->objSchool = $objSchool;
     }
 
-    public function create(){
+    public function create()
+    {
         $schoolCode = $this->objSchool->getSchoolCode();
         $schoolName = $this->objSchool->getSchoolName();
         $schoolDean = $this->objSchool->getSchoolDean();
@@ -20,7 +22,21 @@ class SchoolController{
         $objSchoolController->runCommandSQL($query);
         $objSchoolController->closeDataBase();
     }
-    public function readAll(){
+
+    public function read()
+    {
+        $schoolCode = $this->objSchool->getSchoolCode();
+        $query = "SELECT Idfacultades, Nombre, Decano, Ies_nombre FROM facultades WHERE Idfacultades ='$schoolCode'";
+        $objSchoolController = new ConnectionController();
+        $objSchoolController->openDataBase(LOCALHOST, USER, PASSWORD, DATABASE);
+        $res = $objSchoolController->runSelect($query);
+        $row = $res->fetch_all(MYSQLI_ASSOC);
+        $objSchoolController->closeDataBase();
+        return $row;
+    }
+
+    public function readAll()
+    {
 
         $query = "SELECT * FROM facultades";
         $objSchoolController = new ConnectionController();
@@ -29,12 +45,12 @@ class SchoolController{
         $row = $res->fetch_all(MYSQLI_ASSOC);
         $objSchoolController->closeDataBase();
         return $row;
-
     }
-    public function update(){
-
+    public function update()
+    {
     }
-    public function delete(){
+    public function delete()
+    {
 
         $schoolCode = $this->objSchool->getSchoolCode();
         $query = "DELETE FROM facultades WHERE Idfacultades ='$schoolCode'";
@@ -42,10 +58,5 @@ class SchoolController{
         $objSchoolController->openDataBase(LOCALHOST, USER, PASSWORD, DATABASE);
         $objSchoolController->runCommandSQL($query);
         $objSchoolController->closeDataBase();
-        
     }
-
-    
-
-
 }
