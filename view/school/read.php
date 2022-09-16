@@ -42,19 +42,19 @@ if ($schoolCode = trim($_GET["id"])) {
                     <form>
                         <div class="form-group">
                             <label>Código Facultad</label>
-                            <input type="text" name="txtSchoolCode" class="form-control" value="<?php echo $schoolCode ?>" readonly>
+                            <input type="text" class="form-control" value="<?php echo $schoolCode ?>" readonly>
                         </div>
                         <div class="form-group">
                             <label>Nombre de la Facultad</label>
-                            <input type="text" name="txtSchoolName" class="form-control" value="<?php echo $schoolName ?>" readonly>
+                            <input type="text" class="form-control" value="<?php echo $schoolName ?>" readonly>
                         </div>
                         <div class="form-group">
                             <label>Nombre Decano</label>
-                            <input type="text" name="txtSchoolDean" class="form-control" value="<?php echo $schoolDean ?>" readonly>
+                            <input type="text" class="form-control" value="<?php echo $schoolDean ?>" readonly>
                         </div>
                         <div class="form-group">
                             <label>Nombre IES</label>
-                            <input type="text" name="txtSchoolIES" class="form-control" value="<?php echo $schoolIES ?>" readonly>
+                            <input type="text" class="form-control" value="<?php echo $schoolIES ?>" readonly>
                         </div>
                         <a href="../../index.php" class="btn btn-primary">Regresar</a>
                     </form>
