@@ -48,6 +48,15 @@ class SchoolController
     }
     public function update()
     {
+        $schoolCode = $this->objSchool->getSchoolCode();
+        $schoolName = $this->objSchool->getSchoolName();
+        $schoolDean = $this->objSchool->getSchoolDean();
+        $schoolIES = $this->objSchool->getSchoolIES();
+        $query = "UPDATE facultades SET Idfacultades='$schoolCode', Nombre='$schoolName', Decano='$schoolDean', Ies_nombre='$schoolIES' WHERE Idfacultades='$schoolCode'";
+        $objSchoolController = new ConnectionController();
+        $objSchoolController->openDataBase(LOCALHOST, USER, PASSWORD, DATABASE);
+        $objSchoolController->runCommandSQL($query);
+        $objSchoolController->closeDataBase();
     }
     public function delete()
     {

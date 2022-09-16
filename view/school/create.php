@@ -8,17 +8,11 @@ global $activeHeader;
 $activeHeader = '_CREATE';
 global $titleDocument;
 $titleDocument = 'Página de guardado';
-$schoolCode = $schoolName = $schoolDean = $schoolIES = "";
-$schoolCode_error = $schoolName_error  = $schoolDean_error  = $schoolIES_error = "";
+$schoolName = $schoolDean = $schoolIES = "";
+$schoolName_error  = $schoolDean_error  = $schoolIES_error = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    //validate input
-    $inputSchoolCode = trim($_POST["txtSchoolCode"]);
-    if (empty($inputSchoolCode)) {
-        $schoolCode_error = "Debe ingresar un Codigo";
-    } else {
-        $schoolCode = $inputSchoolCode;
-    }
+    
     $inputSchoolName = trim($_POST["txtSchoolName"]);
     if (empty($inputSchoolName)) {
         $schoolName_error = "Debe ingresar un Nombre para la facultad";
@@ -39,8 +33,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     //check input error is empty to insert
-    if (empty($schoolCode_error) && empty($schoolName_error) && empty($schoolDean_error) && empty($schoolIES_error)) {
-        $objSchool = new School($schoolCode, $schoolName, $schoolDean, $schoolIES);
+    if (empty($schoolName_error) && empty($schoolDean_error) && empty($schoolIES_error)) {
+        $objSchool = new School('', $schoolName, $schoolDean, $schoolIES);
         $objSchoolConnetion = new SchoolController($objSchool);
         $objSchoolConnetion->create();
         header("location: ../../index.php");
@@ -61,11 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <h2 class="mt-5">Registrar Facultades</h2>
                     <p>Debes completar el formulario para registrar Facultad</p>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                        <div class="form-group">
-                            <label>Código Facultad</label>
-                            <input type="text" name="txtSchoolCode" class="form-control <?php echo (!empty($schoolCode_error)) ? 'is-invalid' : ''; ?>">
-                            <span class="invalid-feedback"><?php echo $schoolCode_error; ?></span>
-                        </div>
+                        
                         <div class="form-group">
                             <label>Nombre de la Facultad</label>
                             <input type="text" name="txtSchoolName" class="form-control <?php echo (!empty($schoolName_error)) ? 'is-invalid' : ''; ?>">

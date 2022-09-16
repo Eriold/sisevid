@@ -14,7 +14,6 @@ class EvidenceController
         $idArticle = $this->ojbEvidence->getIdArticle();
         $query = "INSERT INTO Facultades (Nombre, Decano, Ies_nombre)
         VALUES ('Facultad de ingenierías','Alfonso Pérez Márquez','Pascual Bravo');";
-        // $query = "INSERT INTO evidencias VALUES ($nameEvidence, $idArticle)";
         $objEvidenceController = new ConnectionController();
         $objEvidenceController->openDataBase(LOCALHOST, USER, PASSWORD, DATABASE);
         $objEvidenceController->runCommandSQL($query);
