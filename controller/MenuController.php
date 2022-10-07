@@ -20,5 +20,17 @@ class MenuController
         $objMenuController->runCommandSQL($query);
         $objMenuController->closeDataBase();
     }
+
+    public function read()
+    {
+        $menuCode = $this->objMenu->getMenuCode();
+        $query = "SELECT Idmenus, Nombre, Descripcion FROM menus WHERE Idmenus ='$menuCode'";
+        $objMenuController = new ConnectionController();
+        $objMenuController->openDataBase(LOCALHOST, USER, PASSWORD, DATABASE);
+        $res = $objMenuController->runSelect($query);
+        $row = $res->fetch_all(MYSQLI_ASSOC);
+        $objMenuController->closeDataBase();
+        return $row;
+    }
 }
 ?>
