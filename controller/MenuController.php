@@ -55,5 +55,17 @@ class MenuController
         $objMenuController->runCommandSQL($query);
         $objMenuController->closeDataBase();
     }
+
+    public function update()
+    {
+        $menuCode = $this->objMenu->getMenuCode();
+        $menuName = $this->objMenu->getMenuName();
+        $menuDescription = $this->objMenu->getMenuDescription();
+        $query = "UPDATE menus SET Idmenus='$menuCode', Nombre='$menuName', Descripcion='$menuDescription' WHERE Idmenus='$menuCode'";
+        $objMenuController = new ConnectionController();
+        $objMenuController->openDataBase(LOCALHOST, USER, PASSWORD, DATABASE);
+        $objMenuController->runCommandSQL($query);
+        $objMenuController->closeDataBase();
+    }
 }
 ?>

@@ -42,7 +42,7 @@ $menuCode_error = true;
                             <div class="col-6">
                                 <div class="row">
                                     <div class="col mt-5">
-                                        <a href="./view/school/create.php" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Agregar una Facultad</a>
+                                        <a href="./view/menu/create.php" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Agregar una Facultad</a>
                                     </div>
                                 </div>
                             </div>
