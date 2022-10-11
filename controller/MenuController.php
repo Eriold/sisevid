@@ -32,6 +32,7 @@ class MenuController
         $objMenuController->closeDataBase();
         return $row;
     }
+
     public function readAll()
     {
 
@@ -42,6 +43,17 @@ class MenuController
         $row = $res->fetch_all(MYSQLI_ASSOC);
         $objMenuController->closeDataBase();
         return $row;
+    }
+
+    public function delete()
+    {
+
+        $menuCode = $this->objMenu->getMenuCode();
+        $query = "DELETE FROM menus WHERE Idmenus ='$menuCode'";
+        $objMenuController = new ConnectionController();
+        $objMenuController->openDataBase(LOCALHOST, USER, PASSWORD, DATABASE);
+        $objMenuController->runCommandSQL($query);
+        $objMenuController->closeDataBase();
     }
 }
 ?>
