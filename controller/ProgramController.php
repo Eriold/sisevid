@@ -34,6 +34,18 @@ class ProgramController
         $objProgramController->closeDataBase();
         return $row;
     }
+
+    public function read()
+    {
+        $programCode = $this->objProgram->getProgramCode();
+        $query = "SELECT Idprogramas, Nombre, Altacalidad, Codsnies, IDFacultades FROM programas WHERE Idprogramas ='$programCode'";
+        $objProgramController = new ConnectionController();
+        $objProgramController->openDataBase(LOCALHOST, USER, PASSWORD, DATABASE);
+        $res = $objProgramController->runSelect($query);
+        $row = $res->fetch_all(MYSQLI_ASSOC);
+        $objProgramController->closeDataBase();
+        return $row;
+    }
 }
 
 ?>
