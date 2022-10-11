@@ -97,5 +97,4 @@ class School{
         return $this;
     }
 }
-
 ?> 

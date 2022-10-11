@@ -46,6 +46,7 @@ class SchoolController
         $objSchoolController->closeDataBase();
         return $row;
     }
+    
     public function update()
     {
         $schoolCode = $this->objSchool->getSchoolCode();
