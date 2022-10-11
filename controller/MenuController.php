@@ -32,5 +32,16 @@ class MenuController
         $objMenuController->closeDataBase();
         return $row;
     }
+    public function readAll()
+    {
+
+        $query = "SELECT * FROM menus";
+        $objMenuController = new ConnectionController();
+        $objMenuController->openDataBase(LOCALHOST, USER, PASSWORD, DATABASE);
+        $res = $objMenuController->runSelect($query);
+        $row = $res->fetch_all(MYSQLI_ASSOC);
+        $objMenuController->closeDataBase();
+        return $row;
+    }
 }
 ?>

@@ -9,6 +9,8 @@ include('./controller/server.php');
 
 $schoolCode = isset($_GET['txtSchoolCode']) ? $_GET['txtSchoolCode'] : '';
 $schoolCode_error = true;
+$menuCode = isset($_GET['txtMenuCode']) ? $_GET['txtMenuCode'] : '';
+$menuCode_error = true;
 
 ?>
 
@@ -48,7 +50,7 @@ $schoolCode_error = true;
                     </div>
                     <?php
                     // Include config file
-                    include('./model/School.php');
+                   /* include('./model/School.php');
                     include('./controller/ConnectionController.php');
                     include('./controller/SchoolController.php');
 
@@ -107,6 +109,68 @@ $schoolCode_error = true;
                         echo "</table>";
                         if ($schoolCode_error) {
                             echo '<div class="alert alert-danger"><em>No se encontraron resultados con el ID Facultad </em><span class="font-weight-bold">', $schoolCode, '</span></div>';
+                        }
+                    } else {
+                        echo '<div class="alert alert-danger"><em>No existe información en la base de datos.</em></div>';
+                    }*/
+
+                    //trying crud menu
+                    include('./model/Menu.php');
+                    include('./controller/ConnectionController.php');
+                    include('./controller/MenuController.php');
+
+                    // Attempt select query execution
+                    $objMenu = new Menu('', '', '');
+                    $objMenuConnection = new MenuController($objMenu);
+                    $row = $objMenuConnection->readAll();
+                    if ($row > 0) {
+                        echo '<table class="table table-bordered table-striped">';
+                        echo "<thead>";
+                        echo "<tr>";
+                        echo "<th>ID Menu</th>";
+                        echo "<th>Nombre Menu</th>";
+                        echo "<th>Menu Descripcion</th>";
+                        echo "<th>Acciones</th>";
+                        echo "</tr>";
+                        echo "</thead>";
+                        echo "<tbody>";
+                        foreach ($row as $res) {
+                            if ($menuCode != '') {
+                                if ($menuCode == $res['Idmenus']) {
+                                    echo "<tr>";
+                                    echo "<td>" . $res['Idmenus'] . "</td>";
+                                    echo "<td>" . $res['Nombre'] . "</td>";
+                                    echo "<td>" . $res['Descripcion'] . "</td>";
+                                    echo "<td>";
+                                    echo '<a href="./view/menu/read.php?id=' . $res['Idmenus'] . '" class="mr-3" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
+                                    echo '<a href="./view/menu/update.php?id=' . $res['Idmenus'] . '" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
+                                    echo '<a href="./view/menu/delete.php?id=' . $res['Idmenus'] . '" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
+                                    echo "</td>";
+                                    echo "</tr>";
+                                    if ($res['Idmenus'] === null) {
+                                        $menuCode_error = true;
+                                    } else {
+                                        $menuCode_error = false;
+                                    }
+                                }
+                            } else {
+                                echo "<tr>";
+                                echo "<td>" . $res['Idmenus'] . "</td>";
+                                echo "<td>" . $res['Nombre'] . "</td>";
+                                echo "<td>" . $res['Descripcion'] . "</td>";
+                                echo "<td>";
+                                echo '<a href="./view/menu/read.php?id=' . $res['Idmenus'] . '" class="mr-3" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
+                                echo '<a href="./view/menu/update.php?id=' . $res['Idmenus'] . '" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
+                                echo '<a href="./view/menu/delete.php?id=' . $res['Idmenus'] . '" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
+                                echo "</td>";
+                                echo "</tr>";
+                                $menuCode_error = false;
+                            }
+                        }
+                        echo "</tbody>";
+                        echo "</table>";
+                        if ($menuCode_error) {
+                            echo '<div class="alert alert-danger"><em>No se encontraron resultados con el ID Menus </em><span class="font-weight-bold">', $schoolCode, '</span></div>';
                         }
                     } else {
                         echo '<div class="alert alert-danger"><em>No existe información en la base de datos.</em></div>';
