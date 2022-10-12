@@ -59,6 +59,7 @@ class SchoolController
         $objSchoolController->runCommandSQL($query);
         $objSchoolController->closeDataBase();
     }
+    
     public function delete()
     {
 

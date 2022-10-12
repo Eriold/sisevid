@@ -11,7 +11,7 @@ $titleDocument = 'Página de solo lectura';
 $programCode = $programName = $programHighQuality = $programCode_IES = $programCodeSchool = "";
 
 if ($programCode = trim($_GET["id"])) {
-    $objProgram = new Program($programCode, '', '', '', '');
+    $objProgram = new Program($programCode, '', '', '', 0);
     $objProgramConnetion = new ProgramController($objProgram);
     $row = $objProgramConnetion->read();
     if (count($row) > 0) {

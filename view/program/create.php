@@ -8,7 +8,8 @@ global $activeHeader;
 $activeHeader = '_CREATE';
 global $titleDocument;
 $titleDocument = 'Página de guardado';
-$programName = $programHighQuality = $programCode_IES = $programCodeSchool = "";
+$programName = $programHighQuality = $programCode_IES  = "";
+$programCodeSchool = 0;
 $programName_error  = $programHighQuality_error  = $programCode_IES_error = $programCodeSchool_error = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -35,15 +36,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($inputProgramCodeSchool)) {
         $programCodeSchool_error = "Debe ingresar el codigo de la facultad";
     } else {
-        $programCodeSchool = $inputProgramCodeSchool;
+        $programCodeSchool = intval ($inputProgramCodeSchool);
     }
 
     //check input error is empty to insert
     if (empty($programName_error) && empty($programHighQuality_error) && empty($programCode_IES_error)) {
-        $objProgram = new Program('', $programName, $programHighQuality, $programCode_IES, $programCodeSchool_error);
+        $objProgram = new Program('', $programName, $programHighQuality, $programCode_IES, $programCodeSchool);
         $objProgramConnetion = new ProgramController($objProgram);
         $objProgramConnetion->create();
-        header("location: ../../index.php");
+        //header("location: ../../index.php");
     }
 }
 ?>
@@ -79,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </div>
                         <div class="form-group">
                             <label>Codigo de la Facultad</label>
-                            <input type="text" name="txtProgramCodeSchool" class="form-control <?php echo (!empty($programCodeSchool_error)) ? 'is-invalid' : ''; ?>">
+                            <input type="number" name="txtProgramCodeSchool" class="form-control <?php echo (!empty($programCodeSchool_error)) ? 'is-invalid' : ''; ?>">
                             <span class="invalid-feedback"><?php echo $programCodeSchool_error; ?></span>
                         </div>
                         <input type="submit" class="btn btn-primary" value="Enviar">

@@ -4,13 +4,13 @@ class Program{
     private string $programName;
     private string $programHighQuality;
     private string $programCode_IES;
-    private string $programCodeSchool;
+    private int $programCodeSchool;
 
     function __construct(string $ProgramCode,
     string $ProgramName,
     string $ProgramHighQuality,
     string $ProgramCode_IES, 
-    string $ProgramCodeSchool)
+    int $ProgramCodeSchool)
     {
         $this->programCode = $ProgramCode;
         $this->programName = $ProgramName;
