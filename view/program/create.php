@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $objProgram = new Program('', $programName, $programHighQuality, $programCode_IES, $programCodeSchool);
         $objProgramConnetion = new ProgramController($objProgram);
         $objProgramConnetion->create();
-        //header("location: ../../index.php");
+        header("location: ../../index.php");
     }
 }
 ?>

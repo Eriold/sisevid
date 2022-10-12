@@ -16,8 +16,7 @@ class ProgramController
         $programHighQuality = $this->objProgram->getProgramHighQuality();
         $programCode_IES = $this->objProgram->getProgramCode_IES();
         $programCodeSchool = $this->objProgram->getProgramCodeSchool();
-        echo ($programCodeSchool);
-        $query = "INSERT INTO programas (Nombre, Altacalidad, Codsnies, IDFacultades) VALUES ('$programName', '$programHighQuality', '$programCode_IES', 2)";
+        $query = "INSERT INTO programas (Nombre, Altacalidad, Codsnies, IDFacultades) VALUES ('$programName', '$programHighQuality', '$programCode_IES', $programCodeSchool)";
         $objProgramController = new ConnectionController();
         $objProgramController->openDataBase(LOCALHOST, USER, PASSWORD, DATABASE);
         $objProgramController->runCommandSQL($query);
