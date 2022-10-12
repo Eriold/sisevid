@@ -60,6 +60,16 @@ class ProgramController
         $objProgramController->runCommandSQL($query);
         $objProgramController->closeDataBase();
     }
+
+    public function delete()
+    {
+        $programCode = $this->objProgram->getProgramCode();
+        $query = "DELETE FROM programas WHERE Idprogramas ='$programCode'";
+        $objProgramController = new ConnectionController();
+        $objProgramController->openDataBase(LOCALHOST, USER, PASSWORD, DATABASE);
+        $objProgramController->runCommandSQL($query);
+        $objProgramController->closeDataBase();
+    }
 }
 
 ?>
