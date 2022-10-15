@@ -108,7 +108,7 @@ $userCode_error = true;
                         echo "</tbody>";
                         echo "</table>";
                         if ($userCode_error) {
-                            echo '<div class="alert alert-danger"><em>No se encontraron resultados con el ID Menus </em><span class="font-weight-bold">', $schoolCode, '</span></div>';
+                            echo '<div class="alert alert-danger"><em>No se encontraron resultados con el ID Menus </em><span class="font-weight-bold">', $userCode, '</span></div>';
                         }
                     } else {
                         echo '<div class="alert alert-danger"><em>No existe información en la base de datos.</em></div>';
