@@ -2,9 +2,9 @@
 
 // Start global page
 global $activeHeader;
-$activeHeader = '_HOME';
+$activeHeader = '_USERS';
 global $titleDocument;
-$titleDocument = 'Página de inicio';
+$titleDocument = 'Página de usuarios';
 include('../../controller/server.php');
 
 $userCode = isset($_GET['txtUserCode']) ? $_GET['txtUserCode'] : '';
@@ -22,7 +22,7 @@ $userCode_error = true;
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="pull-left">Detalles de Facultades</h2>
+                    <h2 class="pull-left">Detalles de los usuarios</h2>
                     <div class="mt-5 mb-3 clearfix">
                         <div class="row">
                             <div class="col-6">
@@ -30,8 +30,8 @@ $userCode_error = true;
                                     <div class="col mt-3">
                                         <form>
                                             <div class="form-group">
-                                                <label>Consultar por ID Facultad en la tabla</label>
-                                                <input type="number" name="txtSchoolCode" class="form-control" autocomplete="off" value="<?php echo $userCode ?>">
+                                                <label>Consultar por ID Usuarios en la tabla</label>
+                                                <input type="number" name="txtUserCode" class="form-control" autocomplete="off" value="<?php echo $userCode ?>">
                                             </div>
                                         </form>
                                     </div>
