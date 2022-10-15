@@ -23,4 +23,4 @@ $menuCode_error = true;
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
-                <h1>Pepito entro al inicio</h1>
+                <h1>Quienes somos</h1>

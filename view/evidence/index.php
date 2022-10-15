@@ -22,7 +22,7 @@ $IdEvidencia_error = true;
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="pull-left">Tabla de registros de menú</h2>
+                    <h2 class="pull-left">Tabla de registros de Evidencia</h2>
                     <div class="mt-5 mb-3 clearfix">
                         <div class="row">
                             <div class="col-6">
@@ -30,7 +30,7 @@ $IdEvidencia_error = true;
                                     <div class="col mt-3">
                                         <form>
                                             <div class="form-group">
-                                                <label>Consultar por ID Menu</label>
+                                                <label>Consultar por ID Evidencia</label>
                                                 <input type="number" name="txtIdEvidencia" class="form-control" autocomplete="off" value="<?php echo $IdEvidencia ?>">
                                             </div>
                                         </form>

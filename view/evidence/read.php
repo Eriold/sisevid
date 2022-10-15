@@ -75,8 +75,7 @@ if ($IdEvidence = trim($_GET["id"])) {
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="submit" class="btn btn-primary" value="Enviar">
-                            <a href="index.php" class="btn btn-secondary ml-2">Cancelar</a>
+                            <a href="index.php" class="btn btn-primary">Regresar</a>
                     </form>
                 </div>
             </div>
