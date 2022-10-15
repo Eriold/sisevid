@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $objSchool = new School('', $schoolName, $schoolDean, $schoolIES);
         $objSchoolConnetion = new SchoolController($objSchool);
         $objSchoolConnetion->create();
-        // header("location: index.php");
+        header("location: index.php");
     }
 }
 ?>
