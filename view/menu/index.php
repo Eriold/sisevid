@@ -4,12 +4,13 @@
 global $activeHeader;
 $activeHeader = '_HOME';
 global $titleDocument;
-$titleDocument = 'Página de inicio';
+$titleDocument = 'Página de listado de registros Menu';
 include('../../controller/server.php');
 
 $menuCode = isset($_GET['txtMenuCode']) ? $_GET['txtMenuCode'] : '';
 $menuCode_error = true;
 
+echo $menuCode, 'SIII';
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +32,7 @@ $menuCode_error = true;
                                         <form>
                                             <div class="form-group">
                                                 <label>Consultar por ID Menu</label>
-                                                <input type="number" name="txtSchoolCode" class="form-control" autocomplete="off" value="<?php echo $schoolCode ?>">
+                                                <input type="number" name="txtMenuCode" class="form-control" autocomplete="off" value="<?php echo $menuCode ?>">
                                             </div>
                                         </form>
                                     </div>
@@ -40,7 +41,7 @@ $menuCode_error = true;
                             <div class="col-6">
                                 <div class="row">
                                     <div class="col mt-5">
-                                        <a href="create.php" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Agregar una Facultad</a>
+                                        <a href="create.php" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Agregar un Menú</a>
                                     </div>
                                 </div>
                             </div>
@@ -74,9 +75,9 @@ $menuCode_error = true;
                                     echo "<td>" . $res['Nombre'] . "</td>";
                                     echo "<td>" . $res['Descripcion'] . "</td>";
                                     echo "<td>";
-                                    echo '<a href="./view/menu/read.php?id=' . $res['Idmenus'] . '" class="mr-3" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
-                                    echo '<a href="./view/menu/update.php?id=' . $res['Idmenus'] . '" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
-                                    echo '<a href="./view/menu/delete.php?id=' . $res['Idmenus'] . '" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
+                                    echo '<a href="read.php?id=' . $res['Idmenus'] . '" class="mr-3" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
+                                    echo '<a href="update.php?id=' . $res['Idmenus'] . '" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
+                                    echo '<a href="delete.php?id=' . $res['Idmenus'] . '" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
                                     echo "</td>";
                                     echo "</tr>";
                                     if ($res['Idmenus'] === null) {
@@ -91,9 +92,9 @@ $menuCode_error = true;
                                 echo "<td>" . $res['Nombre'] . "</td>";
                                 echo "<td>" . $res['Descripcion'] . "</td>";
                                 echo "<td>";
-                                echo '<a href="./view/menu/read.php?id=' . $res['Idmenus'] . '" class="mr-3" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
-                                echo '<a href="./view/menu/update.php?id=' . $res['Idmenus'] . '" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
-                                echo '<a href="./view/menu/delete.php?id=' . $res['Idmenus'] . '" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
+                                echo '<a href="read.php?id=' . $res['Idmenus'] . '" class="mr-3" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
+                                echo '<a href="update.php?id=' . $res['Idmenus'] . '" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
+                                echo '<a href="delete.php?id=' . $res['Idmenus'] . '" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
                                 echo "</td>";
                                 echo "</tr>";
                                 $menuCode_error = false;
@@ -102,7 +103,7 @@ $menuCode_error = true;
                         echo "</tbody>";
                         echo "</table>";
                         if ($menuCode_error) {
-                            echo '<div class="alert alert-danger"><em>No se encontraron resultados con el ID Menus </em><span class="font-weight-bold">', $schoolCode, '</span></div>';
+                            echo '<div class="alert alert-danger"><em>No se encontraron resultados con el ID Menus </em><span class="font-weight-bold">', $menuCode, '</span></div>';
                         }
                     } else {
                         echo '<div class="alert alert-danger"><em>No existe información en la base de datos.</em></div>';
