@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $objMenu = new Menu($menuCode, $menuName, $menuDescription);
         $objMenuController = new MenuController($objMenu);
         $objMenuController->update();
-        header("location: ../../index.php");
+        header("location: index.php");
     }
 } else {
     if (isset($_GET["id"]) && !empty(trim($_GET["id"]))) {
@@ -85,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <span class="invalid-feedback"><?php echo $menuDescription_error; ?></span>
                         </div>
                         <input type="submit" class="btn btn-primary" value="Actualizar">
-                        <a href="../../index.php" class="btn btn-secondary ml-2">Cancelar</a>
+                        <a href="index.php" class="btn btn-secondary ml-2">Cancelar</a>
                     </form>
                 </div>
             </div>

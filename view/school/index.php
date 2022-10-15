@@ -9,8 +9,6 @@ include('../../controller/server.php');
 
 $schoolCode = isset($_GET['txtSchoolCode']) ? $_GET['txtSchoolCode'] : '';
 $schoolCode_error = true;
-$menuCode = isset($_GET['txtMenuCode']) ? $_GET['txtMenuCode'] : '';
-$menuCode_error = true;
 
 ?>
 
@@ -49,68 +47,66 @@ $menuCode_error = true;
                         </div>
                     </div>
                     <?php
-                    include('../../model/Program.php');
+                    // Include config file
+                    include('../../model/School.php');
                     include('../../controller/ConnectionController.php');
-                    include('../../controller/ProgramController.php');
+                    include('../../controller/SchoolController.php');
 
                     // Attempt select query execution
-                    $objProgram = new Program('', '', '', '', 0);
-                    $objProgramConnection = new ProgramController($objProgram);
-                    $row = $objProgramConnection->readAll();
+                    $objSchool = new School('', '', '', '');
+                    $objSchoolConnection = new SchoolController($objSchool);
+                    $row = $objSchoolConnection->readAll();
                     if ($row > 0) {
                         echo '<table class="table table-bordered table-striped">';
                         echo "<thead>";
                         echo "<tr>";
-                        echo "<th>ID Programas</th>";
-                        echo "<th>Nombre Programa</th>";
-                        echo "<th>Alta Calidad</th>";
-                        echo "<th>COD IES</th>";
-                        echo "<th>ID Facultades</th>";
+                        echo "<th>ID Facultad</th>";
+                        echo "<th>Nombre Facultad</th>";
+                        echo "<th>Nombre del Decano</th>";
+                        echo "<th>Nombre IES</th>";
                         echo "<th>Acciones</th>";
                         echo "</tr>";
                         echo "</thead>";
                         echo "<tbody>";
                         foreach ($row as $res) {
-                            if ($menuCode != '') {
-                                if ($menuCode == $res['Idprogramas']) {
+                            if ($schoolCode != '') {
+                                if ($schoolCode == $res['Idfacultades']) {
                                     echo "<tr>";
-                                    echo "<td>" . $res['Idprogramas'] . "</td>";
+                                    echo "<td>" . $res['Idfacultades'] . "</td>";
                                     echo "<td>" . $res['Nombre'] . "</td>";
-                                    echo "<td>" . $res['Altacalidad'] . "</td>";
-                                    echo "<td>" . $res['Codsnies'] . "</td>";
-                                    echo "<td>" . $res['IDFacultades'] . "</td>";
+                                    echo "<td>" . $res['Decano'] . "</td>";
+                                    echo "<td>" . $res['Ies_nombre'] . "</td>";
                                     echo "<td>";
-                                    echo '<a href="read.php?id=' . $res['Idprogramas'] . '" class="mr-3" title="Ver información" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
-                                    echo '<a href="update.php?id=' . $res['Idprogramas'] . '" class="mr-3" title="Actualizar información" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
-                                    echo '<a href="delete.php?id=' . $res['Idprogramas'] . '" title="Borrar información" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
+                                    echo '<a href="read.php?id=' . $res['Idfacultades'] . '" class="mr-3" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
+                                    echo '<a href="update.php?id=' . $res['Idfacultades'] . '" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
+                                    echo '<a href="delete.php?id=' . $res['Idfacultades'] . '" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
                                     echo "</td>";
                                     echo "</tr>";
-                                    if ($res['Idprogramas'] === null) {
-                                        $menuCode_error = true;
+                                    if ($res['Idfacultades'] === null) {
+                                        $schoolCode_error = true;
                                     } else {
-                                        $menuCode_error = false;
+                                        $schoolCode_error = false;
                                     }
                                 }
                             } else {
                                 echo "<tr>";
-                                echo "<td>" . $res['Idprogramas'] . "</td>";
+                                echo "<td>" . $res['Idfacultades'] . "</td>";
                                 echo "<td>" . $res['Nombre'] . "</td>";
-                                echo "<td>" . $res['Altacalidad'] . "</td>";
-                                echo "<td>" . $res['Codsnies'] . "</td>";
-                                echo "<td>" . $res['IDFacultades'] . "</td>";
+                                echo "<td>" . $res['Decano'] . "</td>";
+                                echo "<td>" . $res['Ies_nombre'] . "</td>";
                                 echo "<td>";
-                                echo '<a href="read.php?id=' . $res['Idprogramas'] . '" class="mr-3" title="Ver información" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
-                                echo '<a href="update.php?id=' . $res['Idprogramas'] . '" class="mr-3" title="Actualizar información" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
-                                echo '<a href="delete.php?id=' . $res['Idprogramas'] . '" title="Borrar información" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
+                                echo '<a href="read.php?id=' . $res['Idfacultades'] . '" class="mr-3" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
+                                echo '<a href="update.php?id=' . $res['Idfacultades'] . '" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
+                                echo '<a href="delete.php?id=' . $res['Idfacultades'] . '" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
                                 echo "</td>";
                                 echo "</tr>";
-                                $menuCode_error = false;
+                                $schoolCode_error = false;
                             }
                         }
                         echo "</tbody>";
                         echo "</table>";
-                        if ($menuCode_error) {
-                            echo '<div class="alert alert-danger"><em>No se encontraron resultados con el ID Menus </em><span class="font-weight-bold">', $schoolCode, '</span></div>';
+                        if ($schoolCode_error) {
+                            echo '<div class="alert alert-danger"><em>No se encontraron resultados con el ID Facultad </em><span class="font-weight-bold">', $schoolCode, '</span></div>';
                         }
                     } else {
                         echo '<div class="alert alert-danger"><em>No existe información en la base de datos.</em></div>';

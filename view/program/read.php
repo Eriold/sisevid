@@ -61,7 +61,7 @@ if ($programCode = trim($_GET["id"])) {
                             <label>Codigo Facultad</label>
                             <input type="text" class="form-control" value="<?php echo $programCodeSchool ?>" readonly>
                         </div>
-                        <a href="../../index.php" class="btn btn-primary">Regresar</a>
+                        <a href="index.php" class="btn btn-primary">Regresar</a>
                     </form>
                 </div>
             </div>

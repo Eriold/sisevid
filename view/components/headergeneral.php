@@ -37,7 +37,7 @@ switch ($activeHeader) {
 }
 ?>
 
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark justify-content-between">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between py-3 tex16 px-5">
   <a class="navbar-brand" href="<?php echo $load ?>index.php">
     <img src="<?php echo $load ?>view/assets/icon.png" width="30" height="30" class="d-inline-block align-top" alt="">
     Sisevid
