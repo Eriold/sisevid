@@ -14,7 +14,7 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
     $objMenu = new Menu($menuCode,'','');
     $objMenuController = new MenuController($objMenu);
     $objMenuController->delete();
-    header("location: ../../index.php");
+    header("location: index.php");
 } else {
     // Check existence of id parameter
     if (empty(trim($_GET["id"]))) {
@@ -43,7 +43,7 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
                             <p>¿Estás seguro que quieres borrar este Menu?</p>
                             <p>
                                 <input type="submit" value="Si" class="btn btn-danger">
-                                <a href="../../index.php" class="btn btn-secondary">No</a>
+                                <a href="index.php" class="btn btn-secondary">No</a>
                             </p>
                         </div>
                     </form>

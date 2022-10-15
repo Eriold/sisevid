@@ -51,7 +51,7 @@ if ($menuCode = trim($_GET["id"])) {
                             <label>Descripcion del Menu</label>
                             <input type="text" class="form-control" value="<?php echo $menuDescription ?>" readonly>
                         </div>
-                        <a href="../../index.php" class="btn btn-primary">Regresar</a>
+                        <a href="index.php" class="btn btn-primary">Regresar</a>
                     </form>
                 </div>
             </div>

@@ -56,7 +56,7 @@ if ($schoolCode = trim($_GET["id"])) {
                             <label>Nombre IES</label>
                             <input type="text" class="form-control" value="<?php echo $schoolIES ?>" readonly>
                         </div>
-                        <a href="../../index.php" class="btn btn-primary">Regresar</a>
+                        <a href="index.php" class="btn btn-primary">Regresar</a>
                     </form>
                 </div>
             </div>

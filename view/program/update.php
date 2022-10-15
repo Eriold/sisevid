@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $objProgram = new Program($programCode, $programName, $programHighQuality, $programCode_IES, $programCodeSchool);
         $objProgramController = new ProgramController($objProgram);
         $objProgramController->update();
-        header("location: ../../index.php");
+        header("location: index.php");
     }
 } else {
     if (isset($_GET["id"]) && !empty(trim($_GET["id"]))) {
@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $programCode_IES = $item["Codsnies"];
                 $programCodeSchool = $item["IDFacultades"];
             } else {
-                header("location: ../error.php");
+                // header("location: ../error.php");
             }
         }
     }
@@ -109,7 +109,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <span class="invalid-feedback"><?php echo $programCodeSchool_error; ?></span>
                         </div>
                         <input type="submit" class="btn btn-primary" value="Actualizar">
-                        <a href="../../index.php" class="btn btn-secondary ml-2">Cancelar</a>
+                        <a href="index.php" class="btn btn-secondary ml-2">Cancelar</a>
                     </form>
                 </div>
             </div>

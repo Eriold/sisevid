@@ -9,8 +9,6 @@ include('../../controller/server.php');
 
 $schoolCode = isset($_GET['txtSchoolCode']) ? $_GET['txtSchoolCode'] : '';
 $schoolCode_error = true;
-$menuCode = isset($_GET['txtMenuCode']) ? $_GET['txtMenuCode'] : '';
-$menuCode_error = true;
 
 ?>
 
@@ -24,7 +22,7 @@ $menuCode_error = true;
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="pull-left">Detalles de Facultades</h2>
+                    <h2 class="pull-left">Tabla de registros de Facultades</h2>
                     <div class="mt-5 mb-3 clearfix">
                         <div class="row">
                             <div class="col-6">
@@ -57,6 +55,7 @@ $menuCode_error = true;
                     $objProgram = new Program('', '', '', '', 0);
                     $objProgramConnection = new ProgramController($objProgram);
                     $row = $objProgramConnection->readAll();
+                    echo var_dump($row);
                     if ($row > 0) {
                         echo '<table class="table table-bordered table-striped">';
                         echo "<thead>";
@@ -71,8 +70,8 @@ $menuCode_error = true;
                         echo "</thead>";
                         echo "<tbody>";
                         foreach ($row as $res) {
-                            if ($menuCode != '') {
-                                if ($menuCode == $res['Idprogramas']) {
+                            if ($schoolCode != '') {
+                                if ($schoolCode == $res['Idprogramas']) {
                                     echo "<tr>";
                                     echo "<td>" . $res['Idprogramas'] . "</td>";
                                     echo "<td>" . $res['Nombre'] . "</td>";
@@ -86,9 +85,9 @@ $menuCode_error = true;
                                     echo "</td>";
                                     echo "</tr>";
                                     if ($res['Idprogramas'] === null) {
-                                        $menuCode_error = true;
+                                        $schoolCode_error = true;
                                     } else {
-                                        $menuCode_error = false;
+                                        $schoolCode_error = false;
                                     }
                                 }
                             } else {
@@ -104,12 +103,12 @@ $menuCode_error = true;
                                 echo '<a href="delete.php?id=' . $res['Idprogramas'] . '" title="Borrar información" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
                                 echo "</td>";
                                 echo "</tr>";
-                                $menuCode_error = false;
+                                $schoolCode_error = false;
                             }
                         }
                         echo "</tbody>";
                         echo "</table>";
-                        if ($menuCode_error) {
+                        if ($schoolCode_error) {
                             echo '<div class="alert alert-danger"><em>No se encontraron resultados con el ID Menus </em><span class="font-weight-bold">', $schoolCode, '</span></div>';
                         }
                     } else {

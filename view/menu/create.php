@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $objMenu = new Menu('', $menuName, $menuDescription);
         $objMenuConnetion = new MenuController($objMenu);
         $objMenuConnetion->create();
-        header("location: ../../index.php");
+        header("location: index.php");
     }
 }
 ?>
@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <span class="invalid-feedback"><?php echo $menuDescription_error; ?></span>
                         </div>
                         <input type="submit" class="btn btn-primary" value="Enviar">
-                        <a href="../../index.php" class="btn btn-secondary ml-2">Cancelar</a>
+                        <a href="index.php" class="btn btn-secondary ml-2">Cancelar</a>
                     </form>
                 </div>
             </div>

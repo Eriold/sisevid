@@ -46,7 +46,7 @@ class SchoolController
         $objSchoolController->closeDataBase();
         return $row;
     }
-    
+
     public function update()
     {
         $schoolCode = $this->objSchool->getSchoolCode();
@@ -59,7 +59,7 @@ class SchoolController
         $objSchoolController->runCommandSQL($query);
         $objSchoolController->closeDataBase();
     }
-    
+
     public function delete()
     {
 

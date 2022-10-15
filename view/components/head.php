@@ -52,7 +52,9 @@ if (count($testArray) > 3) {
             height: 95%;
             margin-bottom: 20px;
         }
-
+        .tex16 {
+            font-size: 16px;
+        }
         table tr td:last-child {
             width: 120px;
         }
