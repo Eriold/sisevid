@@ -1,4 +1,8 @@
 <?php
+global $activeHeader;
+$activeHeader = '_HOME';
+global $titleDocument;
+$titleDocument = 'Página de bienvenida';
 ?>
 <!DOCTYPE html>
 <html lang="en">

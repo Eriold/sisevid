@@ -2,7 +2,7 @@
 
 // Start global page
 global $activeHeader;
-$activeHeader = '_HOME';
+$activeHeader = '_PROGRAMS';
 global $titleDocument;
 $titleDocument = 'Página de inicio';
 include('../../controller/server.php');

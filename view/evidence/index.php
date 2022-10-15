@@ -2,15 +2,14 @@
 
 // Start global page
 global $activeHeader;
-$activeHeader = '_HOME';
+$activeHeader = '_EVIDENCE';
 global $titleDocument;
-$titleDocument = 'Página de listado de registros Menu';
+$titleDocument = 'Página de evidencia';
 include('../../controller/server.php');
 
 $IdEvidencia = isset($_GET['txtIdEvidencia']) ? $_GET['txtIdEvidencia'] : '';
 $IdEvidencia_error = true;
 
-echo $IdEvidencia, 'SIII';
 ?>
 
 <!DOCTYPE html>

@@ -2,9 +2,9 @@
 
 // Start global page
 global $activeHeader;
-$activeHeader = '_HOME';
+$activeHeader = '_SCHOOL';
 global $titleDocument;
-$titleDocument = 'Página de inicio';
+$titleDocument = 'Página de facultades';
 include('../../controller/server.php');
 
 $schoolCode = isset($_GET['txtSchoolCode']) ? $_GET['txtSchoolCode'] : '';

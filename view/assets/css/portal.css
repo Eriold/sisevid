@@ -11,6 +11,9 @@ html {
   background-color: transparent;
 }
 
+li a {
+  color: #ddd;
+}
 /*-------------------------------*/
 /*           Wrappers            */
 /*-------------------------------*/
@@ -97,20 +100,47 @@ html {
   color: #fff;
   background-color: #1a1a1a;
 }
-.sidebar-nav li:nth-child(5n + 1):before {
+.sidebar-nav li:nth-child(7n + 0):before {
   background-color: #ec1b5a;
 }
-.sidebar-nav li:nth-child(5n + 2):before {
+.sidebar-nav li:nth-child(7n + 2):before {
   background-color: #79aefe;
 }
-.sidebar-nav li:nth-child(5n + 3):before {
+.sidebar-nav li:nth-child(7n + 3):before {
   background-color: #314190;
 }
-.sidebar-nav li:nth-child(5n + 4):before {
+.sidebar-nav li:nth-child(7n + 4):before {
   background-color: #279636;
 }
-.sidebar-nav li:nth-child(5n + 5):before {
+.sidebar-nav li:nth-child(7n + 5):before {
   background-color: #7d5d81;
+}
+.sidebar-nav li:nth-child(7n + 6):before {
+  background-color: #b6701f;
+}
+.active_home {
+  background-color: #79aefe;
+  color: #ffffff;
+}
+.active_evidence {
+  background-color: #314190;
+  color: #ffffff;
+}
+.active_menu {
+  background-color: #279636;
+  color: #ffffff;
+}
+.active_programs {
+  background-color: #7d5d81;
+  color: #ffffff;
+}
+.active_school {
+  background-color: #b6701f;
+  color: #ffffff;
+}
+.active_users {
+  background-color: #ec1b5a;
+  color: #ffffff;
 }
 
 .sidebar-nav li:hover:before,
@@ -124,7 +154,7 @@ html {
 
 .sidebar-nav li a {
   display: block;
-  color: #ddd;
+  /* color: #ddd; */
   text-decoration: none;
   padding: 10px 15px 10px 30px;
 }
@@ -208,7 +238,7 @@ a[id*="#user"]::before {
 }
 a[id*="#close"]::before {
   content: "\f057" !important;
-  color: #770e0e;
+  color: #a52727;
 }
 
 /*-------------------------------*/

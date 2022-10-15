@@ -12,51 +12,64 @@ if (count($testArray) > 3) {
 }
 global $activeHeader;
 
-$home = $create = $read = $delete = $update = '';
+$home = $evidence = $menu = $programs = $school = $users = '';
 
 switch ($activeHeader) {
   case '_HOME':
-    $home = '';
-    $create = '';
-    $read = '';
-    $delete = '';
-    $update = '';
+    $home = 'active_home';
+    $evidence = '';
+    $menu = '';
+    $programs = '';
+    $school = '';
+    $users = '';
     break;
-  case '_CREATE':
+  case '_EVIDENCE':
     $home = '';
-    $create = 'active';
-    $read = '';
-    $delete = '';
-    $update = '';
+    $evidence = 'active_evidence';
+    $menu = '';
+    $programs = '';
+    $school = '';
+    $users = '';
     break;
-    break;
-  case '_READ':
+  case '_MENU':
     $home = '';
-    $create = '';
-    $read = 'active';
-    $delete = '';
-    $update = '';
+    $evidence = '';
+    $menu = 'active_menu';
+    $programs = '';
+    $school = '';
+    $users = '';
     break;
-  case '_DELETE':
+  case '_PROGRAMS':
     $home = '';
-    $create = '';
-    $read = '';
-    $delete = 'active';
-    $update = '';
+    $evidence = '';
+    $menu = '';
+    $programs = 'active_programs';
+    $school = '';
+    $users = '';
     break;
-  case '_UPDATE':
+  case '_SCHOOL':
     $home = '';
-    $create = '';
-    $read = '';
-    $delete = '';
-    $update = 'active';
+    $evidence = '';
+    $menu = '';
+    $programs = '';
+    $school = 'active_school';
+    $users = '';
+    break;
+  case '_USERS':
+    $home = '';
+    $evidence = '';
+    $menu = '';
+    $programs = '';
+    $school = '';
+    $users = 'active_users';
     break;
   default:
     $home = '';
-    $create = '';
-    $read = '';
-    $delete = '';
-    $update = '';
+    $evidence = '';
+    $menu = '';
+    $programs = '';
+    $school = '';
+    $users = '';
 }
 ?>
 
@@ -70,12 +83,12 @@ switch ($activeHeader) {
         </a>
       </div>
     </div>
-    <li><a id="#home" href="<?php echo $load ?>view/index.php">Inicio</a></li>
-    <li><a id="#evidence" href="<?php echo $load ?>view/evidence/index.php">Evidencia</a></li>
-    <li><a id="#menu" href="<?php echo $load ?>view/menu/index.php">Menu</a></li>
-    <li><a id="#program" href="<?php echo $load ?>view/program/index.php">Programas</a></li>
-    <li><a id="#school" href="<?php echo $load ?>view/school/index.php">Facultades</a></li>
-    <li><a id="#user" href="<?php echo $load ?>view/user/index.php">Usuarios</a></li>
+    <li><a class="<?php echo $home ?>" id="#home" href="<?php echo $load ?>view/index.php">Inicio</a></li>
+    <li><a class="<?php echo $evidence ?>" id="#evidence" href="<?php echo $load ?>view/evidence/index.php">Evidencia</a></li>
+    <li><a class="<?php echo $menu ?>" id="#menu" href="<?php echo $load ?>view/menu/index.php">Menu</a></li>
+    <li><a class="<?php echo $programs ?>" id="#program" href="<?php echo $load ?>view/program/index.php">Programas</a></li>
+    <li><a class="<?php echo $school ?>" id="#school" href="<?php echo $load ?>view/school/index.php">Facultades</a></li>
+    <li><a class="<?php echo $users ?>" id="#user" href="<?php echo $load ?>view/user/index.php">Usuarios</a></li>
     <!-- <li class="dropdown">
       <a href="#works" class="dropdown-toggle" data-toggle="dropdown">Menu con submenus <span class="caret"></span></a>
       <ul class="dropdown-menu animated fadeInLeft" role="menu">

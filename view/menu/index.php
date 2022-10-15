@@ -2,7 +2,7 @@
 
 // Start global page
 global $activeHeader;
-$activeHeader = '_HOME';
+$activeHeader = '_MENU';
 global $titleDocument;
 $titleDocument = 'Página de listado de registros Menu';
 include('../../controller/server.php');
@@ -10,7 +10,6 @@ include('../../controller/server.php');
 $menuCode = isset($_GET['txtMenuCode']) ? $_GET['txtMenuCode'] : '';
 $menuCode_error = true;
 
-echo $menuCode, 'SIII';
 ?>
 
 <!DOCTYPE html>
