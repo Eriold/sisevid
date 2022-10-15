@@ -71,6 +71,11 @@ switch ($activeHeader) {
     $school = '';
     $users = '';
 }
+session_start();
+if (!isset($_SESSION['id_user']) && !isset($_SESSION['name_user'])) {
+  header('Location:' . $load . 'index.php');
+  exit;
+}
 ?>
 
 <nav class="navbar navbar-inverse fixed-top" id="sidebar-wrapper" role="navigation">
