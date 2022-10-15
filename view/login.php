@@ -1,16 +1,47 @@
 <?php
 
+session_start();
+$_SESSION['close_session'] = ''; //Task, validate off session
+
+include('../model/User.php');
+include('../controller/ConnectionController.php');
+include('../controller/UserController.php');
+include('../controller/server.php');
+
 // Start global page
 global $activeHeader;
 $activeHeader = '_LOGIN';
 global $titleDocument;
 $titleDocument = 'Página de inicio';
-include('../controller/server.php');
 
-$schoolCode = isset($_GET['txtSchoolCode']) ? $_GET['txtSchoolCode'] : '';
-$schoolCode_error = true;
-$menuCode = isset($_GET['txtMenuCode']) ? $_GET['txtMenuCode'] : '';
-$menuCode_error = true;
+$sesionStart = true;
+$email = $password = '';
+$email_error = $password_error = '';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $inputEmail = trim($_POST["txtEmail"]);
+    if (empty($inputEmail)) {
+        $email_error = "Debe ingresar un correo";
+    } else {
+        $email = $inputEmail;
+    }
+
+    $inputPassword = trim($_POST["txtPassword"]);
+    if (empty($inputPassword)) {
+        $password_error = "Debe ingresar una contraseña";
+    } else {
+        $password = $inputPassword;
+    }
+    if (empty($email_error) && empty($password_error)) {
+        $objUser = new User('', '', $password, $email, 0);
+        $objUserConnetion = new UserController($objUser);
+        $rowRes = $objUserConnetion->userLogin();
+        $sesionStart = $rowRes;
+        if ($rowRes) {
+            header("location: ../controller/checked.php");
+        }
+    }
+}
 
 ?>
 
@@ -24,8 +55,8 @@ $menuCode_error = true;
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
     <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <link rel="icon" type="image/x-icon" href="assets/icon.png">
     <title>Página de ingreso</title>
-    <?php include('./components/head.php'); ?>
 </head>
 
 <body>
@@ -36,24 +67,31 @@ $menuCode_error = true;
                 <div class="col-12 user-img">
                     <img src="https://raw.githubusercontent.com/cruizg93/CristianRuizBlog-LoginForm/master/static/img/user.png" />
                 </div>
-                <form class="col-12" action="" method="post">
+                <form class="col-12" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                     <div class="form-group" id="user-group">
-                        <input type="text" class="form-control" placeholder="Nombre de usuario" name="username" />
+                        <input type="text" class="form-control <?php echo (!empty($email_error)) ? 'is-invalid' : ''; ?>" placeholder="Correo" name="txtEmail" />
+                        <span class="invalid-feedback text-white"><?php echo $email_error; ?></span>
                     </div>
                     <div class="form-group" id="contrasena-group">
-                        <input type="password" class="form-control" placeholder="Contrasena" name="password" />
+                        <input type="password" class="form-control <?php echo (!empty($password_error)) ? 'is-invalid' : ''; ?>" placeholder="Contraseña" name="txtPassword" />
+                        <span class="invalid-feedback text-white"><?php echo $password_error; ?></span>
                     </div>
                     <button type="submit" class="btn btn-primary my-2"><i class="fas fa-sign-in-alt"></i> Ingresar </button>
                 </form>
-                <!-- <div class="col-12 forgot">
-                    <a href="#">Recordar contrasena?</a>
-                </div> -->
-                <div class="alert alert-danger" role="alert">
-                    Contraseña inválida.
-                </div>
-                <div class="alert alert-success" role="alert">
+                <?php
+                if (!$sesionStart == true) {
+                    echo '<div class="alert alert-danger" role="alert">
+                    Correo o contraseña son incorrectos
+                </div>';
+                }
+                ?>
+                <?php
+                if ($_SESSION['close_session']) {
+                    echo '<div class="alert alert-success" role="alert">
                     Te desconectaste con éxito.
-                </div>
+                </div>';
+                }
+                ?>
             </div>
         </div>
     </div>

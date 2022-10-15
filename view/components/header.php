@@ -100,6 +100,6 @@ switch ($activeHeader) {
         <li><a href="#awards">item 5</a></li>
       </ul>
     </li> -->
-    <li><a id="#close" href="#followme">Cerrar sesión</a></li>
+    <li><a id="#close" href="<?php echo $load ?>controller/closesesseion.php">Cerrar sesión</a></li>
   </ul>
 </nav>

@@ -70,6 +70,29 @@ class UserController
         $objUserController->closeDataBase();
     }
 
+    public function userLogin()
+    {
+        $userEmail = $this->objUser->getUserEmail();
+        $userPassword = $this->objUser->getUserPassword();
+        $query = "SELECT Idusuarios, Usuario, Idroles FROM usuarios WHERE Correo='$userEmail' AND Contrasena='$userPassword'";
+        $objUserController = new ConnectionController();
+        $objUserController->openDataBase(LOCALHOST, USER, PASSWORD, DATABASE);
+        $res = $objUserController->runSelect($query);
+        $row = $res->fetch_all(MYSQLI_ASSOC);
+        $objUserController->closeDataBase();
+        if(count($row) > 0){
+            session_start();
+            $item = $row[0];
+            $_SESSION['id_user'] = $item['Idusuarios'];
+            $_SESSION['name_user'] = $item['Usuario'];
+            $_SESSION['rol_id'] = $item['Idroles'];
+            $_SESSION['close_session'] = false;
+            return true;
+        }else {
+            return false;
+        }
+    }
+
     // From Roles
     public function getRoles()
     {
