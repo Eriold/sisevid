@@ -17,7 +17,7 @@ $userCode_error = true;
 <?php include('../components/head.php'); ?>
 
 <body>
-    <?php include('../components/header.php'); ?>
+<?php include('../components/header.php'); ?>
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">

@@ -12,9 +12,15 @@ include('../../controller/ConnectionController.php');
 
 $userCode = $userUser = $userPassword  = $userEmail = "";
 $idRoles = 0;
-$userCode_error  = $userUser_error  = $userPassword_error = $userEmail_error = $idRoles = "";
+$userCode_error  = $userUser_error  = $userPassword_error = $userEmail_error = $idRoles_error = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
+    $inputUserCode = trim($_POST["txtUserCode"]);
+    if (empty($inputUserCode)) {
+        $userCode_error = "Debe ingresar el codigo";
+    } else {
+        $userCode = $inputUserCode;
+    }
     $inputUserUser = trim($_POST["txtUserUser"]);
     if (empty($inputUserUser)) {
         $userUser_error = "Debe ingresar un usuario";
@@ -35,15 +41,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     $inputIdRoles = trim($_POST["txtIdRoles"]);
     if (empty($inputIdRoles)) {
-        $idRoles = "Debe ingresar el codigo del rol";
+        $idRoles_error = "Debe ingresar el codigo del rol";
     } else {
         $idRoles = intval ($inputIdRoles);
     }
-    if (empty($userCode_error) && empty($userUser_error) && empty($userPassword_error) && empty($userEmail_error)) {
+    if (empty($userCode_error) && empty($userUser_error) && empty($userPassword_error) && empty($userEmail_error) && empty($idRoles_error)) {
         $objUser = new User($userCode, $userUser, $userPassword, $userEmail, $idRoles);
-        $objUserConnetion = new UserController($objUser);
+        $objUserController = new UserController($objUser);
         $objUserController->update();
-        header("location: index.php");
+        //header("location: index.php");
     }
 } else {
     if (isset($_GET["id"]) && !empty(trim($_GET["id"]))) {
@@ -80,23 +86,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         <div class="form-group">
                             <label>ID Usuario</label>
-                            <input type="text" name="txtSchoolCode" class="form-control" readonly value="<?php echo $schoolCode ?>">
-                            <span class="invalid-feedback"><?php echo $schoolCode_error; ?></span>
+                            <input type="text" name="txtUserCode" class="form-control" readonly value="<?php echo $userCode ?>">
+                            <span class="invalid-feedback"><?php echo $userCode_error; ?></span>
                         </div>
                         <div class="form-group">
-                            <label>Nombre</label>
-                            <input type="text" name="txtSchoolName" class="form-control <?php echo (!empty($schoolName_error)) ? 'is-invalid' : ''; ?>" value="<?php echo $schoolName ?>">
-                            <span class="invalid-feedback"><?php echo $schoolName_error; ?></span>
+                            <label>Nombre Usuario</label>
+                            <input type="text" name="txtUserUser" class="form-control <?php echo (!empty($userCode_error)) ? 'is-invalid' : ''; ?>" value="<?php echo $userUser ?>">
+                            <span class="invalid-feedback"><?php echo $userUser_error; ?></span>
                         </div>
                         <div class="form-group">
-                            <label>Decano</label>
-                            <input type="text" name="txtSchoolDean" class="form-control <?php echo (!empty($schoolDean_error)) ? 'is-invalid' : ''; ?>" value="<?php echo $schoolDean ?>">
-                            <span class="invalid-feedback"><?php echo $schoolDean_error; ?></span>
+                            <label>Password</label>
+                            <input type="text" name="txtUserPassword" class="form-control <?php echo (!empty($userPassword_error)) ? 'is-invalid' : ''; ?>" value="<?php echo $userPassword ?>">
+                            <span class="invalid-feedback"><?php echo $userPassword_error; ?></span>
                         </div>
                         <div class="form-group">
-                            <label>Nombre IES</label>
-                            <input type="text" name="txtSchoolIES" class="form-control <?php echo (!empty($schoolIES_error)) ? 'is-invalid' : ''; ?>" value="<?php echo $schoolIES ?>">
-                            <span class="invalid-feedback"><?php echo $schoolIES_error; ?></span>
+                            <label>Correo</label>
+                            <input type="text" name="txtUserEmail" class="form-control <?php echo (!empty($userEmail_error)) ? 'is-invalid' : ''; ?>" value="<?php echo $userEmail ?>">
+                            <span class="invalid-feedback"><?php echo $userEmail_error; ?></span>
+                        </div>
+                        <div class="form-group">
+                            <label>ID Rol</label>
+                            <input type="number" name="txtIdRoles" class="form-control <?php echo (!empty($idRoles_error)) ? 'is-invalid' : ''; ?>" value="<?php echo $idRoles ?>">
+                            <span class="invalid-feedback"><?php echo $idRoles_error; ?></span>
                         </div>
                         <input type="submit" class="btn btn-primary" value="Actualizar">
                         <a href="index.php" class="btn btn-secondary ml-2">Cancelar</a>
