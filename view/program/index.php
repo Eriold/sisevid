@@ -7,7 +7,7 @@ global $titleDocument;
 $titleDocument = 'Página de inicio';
 include('../../controller/server.php');
 
-$idProgramas = isset($_GET['txtSchoolCode']) ? $_GET['txtSchoolCode'] : '';
+$idProgramas = isset($_GET['txtIdPrograms']) ? $_GET['txtIdPrograms'] : '';
 $idProgramas_error = true;
 
 ?>
@@ -31,7 +31,7 @@ $idProgramas_error = true;
                                         <form>
                                             <div class="form-group">
                                                 <label>Consultar por ID Programas</label>
-                                                <input type="number" name="txtSchoolCode" class="form-control" autocomplete="off" value="<?php echo $idProgramas ?>">
+                                                <input type="number" name="txtIdPrograms" class="form-control" autocomplete="off" value="<?php echo $idProgramas ?>">
                                             </div>
                                         </form>
                                     </div>
