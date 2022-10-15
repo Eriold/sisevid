@@ -49,12 +49,12 @@ class UserController
 
     public function update()
     {
-        $userCode = $this->objUser->getUserCode();
+        $userCode = (int) $this->objUser->getUserCode();
         $userUser = $this->objUser->getUserUser();
         $userPassword = $this->objUser->getUserPassword();
         $userEmail = $this->objUser->getUserEmail();
-        $idRoles = $this->objUser->getIdRoles();
-        $query = "UPDATE usuarios SET Idusuarios='$userCode', Usuario='$userUser', Contrasena='$userPassword', Correo='$userEmail', Idroles='$idRoles' WHERE Idusuarios='$userCode'";
+        $idRoles = (int)$this->objUser->getIdRoles();
+        $query = "UPDATE usuarios SET Idusuarios=$userCode, Usuario='$userUser', Contrasena='$userPassword', Correo='$userEmail', Idroles=$idRoles WHERE Idusuarios=$userCode";
         $objUserController = new ConnectionController();
         $objUserController->openDataBase(LOCALHOST, USER, PASSWORD, DATABASE);
         $objUserController->runCommandSQL($query);
