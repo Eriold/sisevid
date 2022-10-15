@@ -38,7 +38,8 @@ if (count($testArray) > 3) {
             background-color: white;
             padding: 12px 12px 0px 12px;
             border-radius: 8px;
-            height: 95%;
+            min-height: 95%;
+            height: auto;
             margin-bottom: 20px;
         }
 
