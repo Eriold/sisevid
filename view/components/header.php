@@ -60,29 +60,33 @@ switch ($activeHeader) {
 }
 ?>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="<?php echo $load ?>index.php">
-    <img src="<?php echo $load ?>view/assets/icon.png" width="30" height="30" class="d-inline-block align-top" alt="">
-    Sisevid
-  </a>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item <?php echo $create ?>">
-        <a class="nav-link" href="<?php echo $load ?>view/school/create.php">Crear <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item <?php echo $read ?>">
-        <a class="nav-link" href="<?php echo $load ?>view/school/read.php">Leer</a>
-      </li>
-      <li class="nav-item <?php echo $update ?>">
-        <a class="nav-link" href="<?php echo $load ?>view/school/update.php">Actualizar</a>
-      </li>
-      <li class="nav-item <?php echo $delete ?>">
-        <a class="nav-link" href="<?php echo $load ?>view/school/delete.php">Borrar</a>
-      </li>
-      <!-- <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li> -->
-    </ul>
-  </div>
+<nav class="navbar navbar-inverse fixed-top" id="sidebar-wrapper" role="navigation">
+  <ul class="nav sidebar-nav">
+    <div class="sidebar-header">
+      <div class="sidebar-brand">
+        <a class="navbar-brand" href="<?php echo $load ?>view/index.php">
+          <img src="<?php echo $load ?>view/assets/icon.png" width="30" height="30" class="d-inline-block align-top" alt="">
+          Sisevid
+        </a>
+      </div>
+    </div>
+    <li><a id="#home" href="<?php echo $load ?>view/index.php">Inicio</a></li>
+    <li><a id="#evidence" href="<?php echo $load ?>view/evidence/index.php">Evidencia</a></li>
+    <li><a id="#menu" href="<?php echo $load ?>view/menu/index.php">Menu</a></li>
+    <li><a id="#program" href="<?php echo $load ?>view/program/index.php">Programas</a></li>
+    <li><a id="#school" href="<?php echo $load ?>view/school/index.php">Facultades</a></li>
+    <li><a id="#user" href="<?php echo $load ?>view/user/index.php">Usuarios</a></li>
+    <!-- <li class="dropdown">
+      <a href="#works" class="dropdown-toggle" data-toggle="dropdown">Menu con submenus <span class="caret"></span></a>
+      <ul class="dropdown-menu animated fadeInLeft" role="menu">
+        <div class="dropdown-header">Titulo del sub menu</div>
+        <li><a href="#pictures">item 1</a></li>
+        <li><a href="#videos">item 2</a></li>
+        <li><a href="#books">item 3</a></li>
+        <li><a href="#art">item 4</a></li>
+        <li><a href="#awards">item 5</a></li>
+      </ul>
+    </li> -->
+    <li><a id="#close" href="#followme">Cerrar sesión</a></li>
+  </ul>
 </nav>
