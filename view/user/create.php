@@ -5,15 +5,26 @@ include('../../controller/UserController.php');
 include('../../controller/server.php');
 
 global $activeHeader;
-$activeHeader = '_CREATE';
+$activeHeader = '_USERS';
 global $titleDocument;
 $titleDocument = 'Página de guardado';
+
 $userCode = $userUser = $userPassword  = $userEmail = "";
 $idRoles = 0;
-$userCode_error  = $userUser_error  = $userPassword_error = $userEmail_error = $idRoles = "";
+$userCode_error  = $userUser_error  = $userPassword_error = $userEmail_error = $idRoles_error = "";
+
+$objRoles = new User('', '', '', '', 0);
+$objRolesController = new UserController($objRoles);
+$row = $objRolesController->getRoles();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
+
+    $inputUserCode = trim($_POST["txtUserCode"]);
+    if (empty($inputUserCode)) {
+        $userCode_error = "Debe ingresar una cédula";
+    } else {
+        $userCode = $inputUserCode;
+    }
     $inputUserUser = trim($_POST["txtUserUser"]);
     if (empty($inputUserUser)) {
         $userUser_error = "Debe ingresar un usuario";
@@ -32,19 +43,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $userEmail = $inputUserEmail;
     }
-    $inputIdRoles = trim($_POST["txtIdRoles"]);
+
+    $inputIdRoles = trim($_POST["dpdtxtUserRol"]);
     if (empty($inputIdRoles)) {
-        $idRoles = "Debe ingresar el codigo del rol";
+        $idRoles_error = "Debe ingresar el codigo del rol";
     } else {
-        $idRoles = intval ($inputIdRoles);
+        $idRoles = intval($inputIdRoles);
     }
 
     //check input error is empty to insert
-    if (empty($userUser_error) && empty($userPassword_error) && empty($userEmail_error)) {
-        $objUser = new User('', $userUser, $userPassword, $userEmail, $idRoles);
+    if (empty($userUser_error) && empty($userPassword_error) && empty($userEmail_error) && empty($userCode_error)) {
+        $objUser = new User($userCode, $userUser, $userPassword, $userEmail, $idRoles);
         $objUserConnetion = new UserController($objUser);
         $objUserConnetion->create();
-        //header("location: ../../index.php");
+        header("location: index.php");
     }
 }
 ?>
@@ -62,7 +74,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <h2 class="mt-5">Registrar Usuarios</h2>
                     <p>Debes completar el formulario para registrar el Usuario</p>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                        
+
+                        <div class="form-group">
+                            <label>Cedula del usuario</label>
+                            <input type="text" name="txtUserCode" class="form-control <?php echo (!empty($userCode_error)) ? 'is-invalid' : ''; ?>">
+                            <span class="invalid-feedback"><?php echo $userCode_error; ?></span>
+                        </div>
                         <div class="form-group">
                             <label>Nombre del usuario</label>
                             <input type="text" name="txtUserUser" class="form-control <?php echo (!empty($userUser_error)) ? 'is-invalid' : ''; ?>">
@@ -80,11 +97,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </div>
                         <div class="form-group">
                             <label>Codigo de los roles</label>
-                            <input type="number" name="txtIdRoles" class="form-control <?php echo (!empty($idRoles)) ? 'is-invalid' : ''; ?>">
-                            <span class="invalid-feedback"><?php echo $idRoles; ?></span>
+                            <div class="input-group mb-3">
+                                <select class="custom-select form-control <?php echo (!empty($idRoles_error)) ? 'is-invalid' : ''; ?>" id="inputGroupSelect02" name="dpdtxtUserRol">
+                                    <option selected value="">Seleccionar...</option>
+                                    <?php
+                                    foreach ($row as $item) {
+                                        echo '<option value="', $item['Idroles'], '">', $item['Nombre'], '</option>';
+                                    }
+                                    ?>
+                                </select>
+                                <div class="input-group-append">
+                                    <label class="input-group-text" for="inputGroupSelect02">Opciones...</label>
+                                </div>
+                            </div>
+                            <span class="invalid-feedback d-block"><?php echo $idRoles_error; ?></span>
                         </div>
                         <input type="submit" class="btn btn-primary" value="Enviar">
-                        <a href="../../index.php" class="btn btn-secondary ml-2">Cancelar</a>
+                        <a href="index.php" class="btn btn-secondary ml-2">Cancelar</a>
                     </form>
                 </div>
             </div>

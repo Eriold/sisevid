@@ -5,27 +5,33 @@ include('../../controller/UserController.php');
 include('../../controller/server.php');
 
 global $activeHeader;
-$activeHeader = '_CREATE';
+$activeHeader = '_USERS';
 global $titleDocument;
 $titleDocument = 'Página de solo lectura';
+
 $userCode = $userUser = $userPassword  = $userEmail = $idRoles = "";
 
+$objRoles = new User('', '', '', '', 0);
+$objRolesController = new UserController($objRoles);
+$row = $objRolesController->getRoles();
+
 if ($userCode = trim($_GET["id"])) {
-    $objUser = new User($userCode, '', '', '', 0);
-    $objUserConnetion = new UserController($objUser);
-    $row = $objUserConnetion->read();
-    if (count($row) > 0) {
-        foreach ($row as $res) {
+    $objUser = new User($userCode, "", "", "", 0);
+    $objUserController = new UserController($objUser);
+    $resGet = $objUserController->read();
+    if (count($resGet) > 0) {
+        foreach ($resGet as $res) {
+            $userCode = $res["Idusuarios"];
             $userUser = $res['Usuario'];
             $userPassword = $res['Contrasena'];
             $userEmail = $res['Correo'];
             $idRoles = $res['Idroles'];
         }
     } else {
-       // header("location: ../error.php");
+        header("location: error.php");
     }
 } else {
-   // header("location: ../error.php");
+    header("location: error.php");
 }
 ?>
 
@@ -34,7 +40,7 @@ if ($userCode = trim($_GET["id"])) {
 <?php include('../components/head.php') ?>
 
 <body>
-    <?php include('../components/header.php') ?>
+<?php include('../components/header.php') ?>
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
@@ -42,7 +48,7 @@ if ($userCode = trim($_GET["id"])) {
                     <h2 class="mt-5">Información detallada del Usuario</h2>
                     <form>
                         <div class="form-group">
-                            <label>Código del usuario</label>
+                            <label>Cedula del usuario</label>
                             <input type="text" class="form-control" value="<?php echo $userCode ?>" readonly>
                         </div>
                         <div class="form-group">
@@ -58,10 +64,23 @@ if ($userCode = trim($_GET["id"])) {
                             <input type="text" class="form-control" value="<?php echo $userEmail ?>" readonly>
                         </div>
                         <div class="form-group">
-                            <label>Rol</label>
-                            <input type="text" class="form-control" value="<?php echo $idRoles ?>" readonly>
+                            <label>Rol de usuario</label>
+                            <div class="input-group mb-3">
+                                <select class="custom-select form-control" id="inputGroupSelect02" name="dpdtxtProgramCodeSchool" disabled>
+                                    <?php
+                                    foreach ($row as $item) {
+                                        echo "<option value=''>", $item['Nombre'], "</option>";
+                                        if ($item['Idroles'] == $idRoles) {
+                                        }
+                                    }
+                                    ?>
+                                </select>
+                                <div class="input-group-append">
+                                    <label class="input-group-text" for="inputGroupSelect02">Opciones...</label>
+                                </div>
+                            </div>
                         </div>
-                        <a href="../../index.php" class="btn btn-primary">Regresar</a>
+                        <a href="index.php" class="btn btn-primary">Regresar</a>
                     </form>
                 </div>
             </div>

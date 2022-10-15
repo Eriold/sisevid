@@ -5,7 +5,7 @@ include('../../controller/SchoolController.php');
 include('../../controller/server.php');
 
 global $activeHeader;
-$activeHeader = '_CREATE';
+$activeHeader = '_SCHOOL';
 global $titleDocument;
 $titleDocument = 'Página de solo lectura';
 $schoolCode = $schoolName = $schoolDean = $schoolIES = "";

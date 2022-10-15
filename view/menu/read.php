@@ -5,7 +5,7 @@ include('../../controller/MenuController.php');
 include('../../controller/server.php');
 
 global $activeHeader;
-$activeHeader = '_CREATE';
+$activeHeader = '_MENU';
 global $titleDocument;
 $titleDocument = 'Página de solo lectura';
 $menuCode = $menuName = $menuDescription = "";

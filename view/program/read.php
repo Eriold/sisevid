@@ -5,7 +5,7 @@ include('../../controller/ProgramController.php');
 include('../../controller/server.php');
 
 global $activeHeader;
-$activeHeader = '_CREATE';
+$activeHeader = '_PROGRAMS';
 global $titleDocument;
 $titleDocument = 'Página de solo lectura';
 $programCode = $programName = $programHighQuality = $programCode_IES = $programCodeSchool = "";

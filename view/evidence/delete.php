@@ -5,7 +5,7 @@ include('../../controller/EvidenceController.php');
 include('../../controller/server.php');
 
 global $activeHeader;
-$activeHeader = '_DELETE';
+$activeHeader = '_EVIDENCE';
 global $titleDocument;
 $titleDocument = 'Página de borrado';
 

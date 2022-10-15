@@ -1,6 +1,6 @@
 <?php
 global $activeHeader;
-$activeHeader = '_UPDATE';
+$activeHeader = '_USERS';
 global $titleDocument;
 $titleDocument = 'Página de actualización';
 include('../components/head.php');
@@ -13,8 +13,13 @@ include('../../controller/ConnectionController.php');
 $userCode = $userUser = $userPassword  = $userEmail = "";
 $idRoles = 0;
 $userCode_error  = $userUser_error  = $userPassword_error = $userEmail_error = $idRoles_error = "";
+
+$objRoles = new User('', '', '', '', 0);
+$objRolesController = new UserController($objRoles);
+$row = $objRolesController->getRoles();
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
+
     $inputUserCode = trim($_POST["txtUserCode"]);
     if (empty($inputUserCode)) {
         $userCode_error = "Debe ingresar el codigo";
@@ -39,22 +44,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $userEmail = $inputUserEmail;
     }
-    $inputIdRoles = trim($_POST["txtIdRoles"]);
+    $inputIdRoles = trim($_POST["dpdtxtProgramCodeSchool"]);
     if (empty($inputIdRoles)) {
-        $idRoles_error = "Debe ingresar el codigo del rol";
+        $idRoles_error = "Debe seleccionar un rol";
     } else {
-        $idRoles = intval ($inputIdRoles);
+        $idRoles = intval($inputIdRoles);
     }
     if (empty($userCode_error) && empty($userUser_error) && empty($userPassword_error) && empty($userEmail_error) && empty($idRoles_error)) {
         $objUser = new User($userCode, $userUser, $userPassword, $userEmail, $idRoles);
         $objUserController = new UserController($objUser);
         $objUserController->update();
-        //header("location: index.php");
+        header("location: index.php");
     }
 } else {
     if (isset($_GET["id"]) && !empty(trim($_GET["id"]))) {
         $id = trim($_GET["id"]);
-        $objUser = new User($id, "", "", "",0);
+        $objUser = new User($id, "", "", "", 0);
         $objUserController = new UserController($objUser);
         $resGet = $objUserController->read();
         foreach ($resGet as $item) {
@@ -65,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $userEmail = $item["Correo"];
                 $idRoles = $item["Idroles"];
             } else {
-                header("location: ../error.php");
+                header("location: error.php");
             }
         }
     }
@@ -105,9 +110,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <span class="invalid-feedback"><?php echo $userEmail_error; ?></span>
                         </div>
                         <div class="form-group">
-                            <label>ID Rol</label>
-                            <input type="number" name="txtIdRoles" class="form-control <?php echo (!empty($idRoles_error)) ? 'is-invalid' : ''; ?>" value="<?php echo $idRoles ?>">
-                            <span class="invalid-feedback"><?php echo $idRoles_error; ?></span>
+                            <label>Rol de usuario</label>
+                            <div class="input-group mb-3">
+                                <select class="custom-select form-control <?php echo (!empty($idRoles_error)) ? 'is-invalid' : ''; ?>" id="inputGroupSelect02" name="dpdtxtProgramCodeSchool">
+                                    <?php
+                                    foreach ($row as $item) {
+                                        if ($item['Idroles'] == $idRoles) {
+                                            echo '<option value="', $item['Idroles'], '">', $item['Nombre'], '</option>';
+                                        }
+                                    }
+                                    ?>
+                                    <?php
+                                    foreach ($row as $item) {
+                                        echo '<option value="', $item['Idroles'], '">', $item['Nombre'], '</option>';
+                                    }
+                                    ?>
+                                </select>
+                                <div class="input-group-append">
+                                    <label class="input-group-text" for="inputGroupSelect02">Opciones...</label>
+                                </div>
+                            </div>
+                            <span class="invalid-feedback d-block"><?php echo $idRoles_error; ?></span>
                         </div>
                         <input type="submit" class="btn btn-primary" value="Actualizar">
                         <a href="index.php" class="btn btn-secondary ml-2">Cancelar</a>

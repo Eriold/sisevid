@@ -16,8 +16,7 @@ class UserController
         $userPassword = $this->objUser->getUserPassword();
         $userEmail = $this->objUser->getUserEmail();
         $idRoles = $this->objUser->getIdRoles();
-        $query = "INSERT INTO usuarios (Usuario, Contrasena, Correo, Idroles) VALUES ('$userUser', '$userPassword', '$userEmail', $idRoles)";
-        echo($userUser);
+        $query = "INSERT INTO usuarios (Idusuarios, Usuario, Contrasena, Correo, Idroles) VALUES ('$userCode','$userUser', '$userPassword', '$userEmail', $idRoles)";
         $objUserController = new ConnectionController();
         $objUserController->openDataBase(LOCALHOST, USER, PASSWORD, DATABASE);
         $objUserController->runCommandSQL($query);
@@ -70,6 +69,16 @@ class UserController
         $objUserController->runCommandSQL($query);
         $objUserController->closeDataBase();
     }
-}
 
-?>
+    // From Roles
+    public function getRoles()
+    {
+        $query = "SELECT * FROM roles";
+        $objRolesController = new ConnectionController();
+        $objRolesController->openDataBase(LOCALHOST, USER, PASSWORD, DATABASE);
+        $res = $objRolesController->runSelect($query);
+        $row = $res->fetch_all(MYSQLI_ASSOC);
+        $objRolesController->closeDataBase();
+        return $row;
+    }
+}

@@ -12,7 +12,7 @@ $row = $objSchoolConnection->readAll();
 
 
 global $activeHeader;
-$activeHeader = '_UPDATE';
+$activeHeader = '_PROGRAMS';
 global $titleDocument;
 $titleDocument = 'Página de actualización';
 

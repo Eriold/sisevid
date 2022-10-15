@@ -1,6 +1,6 @@
 <?php
 global $activeHeader;
-$activeHeader = '_DELETE';
+$activeHeader = '_USERS';
 global $titleDocument;
 $titleDocument = 'Página de borrado';
 include('../../controller/ConnectionController.php');

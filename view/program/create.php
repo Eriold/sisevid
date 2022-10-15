@@ -11,7 +11,7 @@ $objSchoolConnection = new SchoolController($objSchool);
 $row = $objSchoolConnection->readAll();
 
 global $activeHeader;
-$activeHeader = '_CREATE';
+$activeHeader = '_PROGRAMS';
 global $titleDocument;
 $titleDocument = 'Página de guardado';
 $programName = $programHighQuality = $programCode_IES  = "";

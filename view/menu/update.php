@@ -1,6 +1,6 @@
 <?php
 global $activeHeader;
-$activeHeader = '_UPDATE';
+$activeHeader = '_MENU';
 global $titleDocument;
 $titleDocument = 'Página de actualización';
 include('../components/head.php');
