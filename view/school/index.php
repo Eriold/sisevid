@@ -42,7 +42,7 @@ $menuCode_error = true;
                             <div class="col-6">
                                 <div class="row">
                                     <div class="col mt-5">
-                                        <a href="./view/program/create.php" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Agregar una Facultad</a>
+                                        <a href="create.php" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Agregar una Facultad</a>
                                     </div>
                                 </div>
                             </div>
@@ -80,9 +80,9 @@ $menuCode_error = true;
                                     echo "<td>" . $res['Codsnies'] . "</td>";
                                     echo "<td>" . $res['IDFacultades'] . "</td>";
                                     echo "<td>";
-                                    echo '<a href="./view/program/read.php?id=' . $res['Idprogramas'] . '" class="mr-3" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
-                                    echo '<a href="./view/program/update.php?id=' . $res['Idprogramas'] . '" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
-                                    echo '<a href="./view/program/delete.php?id=' . $res['Idprogramas'] . '" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
+                                    echo '<a href="read.php?id=' . $res['Idprogramas'] . '" class="mr-3" title="Ver información" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
+                                    echo '<a href="update.php?id=' . $res['Idprogramas'] . '" class="mr-3" title="Actualizar información" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
+                                    echo '<a href="delete.php?id=' . $res['Idprogramas'] . '" title="Borrar información" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
                                     echo "</td>";
                                     echo "</tr>";
                                     if ($res['Idprogramas'] === null) {
@@ -99,9 +99,9 @@ $menuCode_error = true;
                                 echo "<td>" . $res['Codsnies'] . "</td>";
                                 echo "<td>" . $res['IDFacultades'] . "</td>";
                                 echo "<td>";
-                                echo '<a href="./view/program/read.php?id=' . $res['Idprogramas'] . '" class="mr-3" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
-                                echo '<a href="./view/program/update.php?id=' . $res['Idprogramas'] . '" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
-                                echo '<a href="./view/program/delete.php?id=' . $res['Idprogramas'] . '" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
+                                echo '<a href="read.php?id=' . $res['Idprogramas'] . '" class="mr-3" title="Ver información" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
+                                echo '<a href="update.php?id=' . $res['Idprogramas'] . '" class="mr-3" title="Actualizar información" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
+                                echo '<a href="delete.php?id=' . $res['Idprogramas'] . '" title="Borrar información" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
                                 echo "</td>";
                                 echo "</tr>";
                                 $menuCode_error = false;

@@ -30,8 +30,27 @@ if (count($testArray) > 3) {
     <link rel="stylesheet" href="<?php echo $load ?>view/assets/css/demo.css" />
     <style>
         .wrapper {
-            width: 850px;
+            /* width: 850px; */
             margin: 0 auto;
+            margin-left: 250px;
+            margin-right: 40px;
+            margin-top: 20px;
+            background-color: white;
+            padding: 12px 12px 0px 12px;
+            border-radius: 8px;
+            height: 95%;
+            margin-bottom: 20px;
+        }
+
+        .wrapper2 {
+            margin: 0 auto;
+            margin-left: 250px;
+            margin-right: 40px;
+            margin-top: 20px;
+            padding: 12px 12px 0px 12px;
+            border-radius: 8px;
+            height: 95%;
+            margin-bottom: 20px;
         }
 
         table tr td:last-child {
@@ -39,8 +58,8 @@ if (count($testArray) > 3) {
         }
     </style>
     <script>
-        $(document).ready(function() {
-            $('[data-toggle="tooltip"]').tooltip();
-        });
+        // $(document).ready(function() {
+        //     $('[data-toggle="tooltip"]').tooltip();
+        // });
     </script>
 </head>
