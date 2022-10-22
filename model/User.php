@@ -1,4 +1,5 @@
 <?
+
 class User{
     private int $userIdUser;
     private string $userUsuario;
@@ -6,11 +7,11 @@ class User{
     private string $userCorreo;
     private int $userIdRol;
 
-    function __construct(string $userIdUser,
+    function __construct(int $userIdUser,
     string $userUsuario,
     string $userPassword,
     string $userCorreo,
-    string $userIdRol){
+    int $userIdRol){
         $this->userIdUser = $userIdUser;
         $this->userUsuario = $userUsuario;
         $this->userPassword = $userPassword;
