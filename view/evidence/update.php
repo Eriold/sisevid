@@ -46,10 +46,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $resGet = $objEvidenceController->read();
         if (count($resGet) > 0) {
             foreach ($resGet as $item) {
-                if ($item["Idevidencias"] && $item["Nombre"] && $item["Idarticulos"]) {
-                    $evidenceId = $item["Idevidencias"];
-                    $evidenceName = $item["Nombre"];
-                    $evidenceArticle = $item["Idarticulos"];
+                if ($item["idEvidence"] && $item["name"] && $item["idArticle"]) {
+                    $evidenceId = $item["idEvidence"];
+                    $evidenceName = $item["name"];
+                    $evidenceArticle = $item["idArticle"];
                 }
             }
         } else {
@@ -88,14 +88,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <select class="custom-select form-control <?php echo (!empty($evidenceArticle_error)) ? 'is-invalid' : ''; ?>" id="inputGroupSelect02" name="dpdtxtEvidenceArticle">
                                     <?php
                                     foreach ($row as $item) {
-                                        if ($item['Idarticulos'] == $evidenceArticle) {
-                                            echo '<option value="', $item['Idarticulos'], '">', $item['Idarticulos'], '. ', $item['Nombre'], '</option>';
+                                        if ($item['idArticle'] == $evidenceArticle) {
+                                            echo '<option value="', $item['idArticle'], '">', $item['idArticle'], '. ', $item['name'], '</option>';
                                         }
                                     }
                                     ?>
                                     <?php
                                     foreach ($row as $item) {
-                                        echo '<option value="', $item['Idarticulos'], '">', $item['Idarticulos'], '. ', $item['Nombre'], '</option>';
+                                        echo '<option value="', $item['idArticle'], '">', $item['idArticle'], '. ', $item['name'], '</option>';
                                     }
                                     ?>
                                 </select>

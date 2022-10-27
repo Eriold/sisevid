@@ -84,18 +84,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Codigo IES</label>
-                            <input type="number" name="txtProgramCode_IES" class="form-control <?php echo (!empty($programCode_IES_error)) ? 'is-invalid' : ''; ?>">
-                            <span class="invalid-feedback"><?php echo $programCode_IES_error; ?></span>
-                        </div>
-                        <div class="form-group">
                             <label>Codigo de la Facultad</label>
                             <div class="input-group mb-3">
                                 <select class="custom-select form-control <?php echo (!empty($programCodeSchool_error)) ? 'is-invalid' : ''; ?>" id="inputGroupSelect02" name="dpdtxtProgramCodeSchool">
                                     <option selected>Seleccionar...</option>
                                     <?php
                                     foreach ($row as $item) {
-                                        echo '<option value="', $item['Idfacultades'], '">', $item['Ies_nombre'], '</option>';
+                                        echo '<option value="', $item['idFaculty'], '">', $item['iesName'], '</option>';
                                     }
                                     ?>
                                 </select>

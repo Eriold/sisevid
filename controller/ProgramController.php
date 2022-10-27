@@ -1,7 +1,9 @@
 <?php
 
+
 class ProgramController
 {
+
 
     var $objProgram;
 
@@ -14,9 +16,8 @@ class ProgramController
     {
         $programName = $this->objProgram->getProgramName();
         $programHighQuality = (int) $this->objProgram->getProgramHighQuality();
-        $programCode_IES = (int) $this->objProgram->getProgramCode_IES();
         $programCodeSchool = (int) $this->objProgram->getProgramCodeSchool();
-        $query = "INSERT INTO programas (Nombre, Altacalidad, Codsnies, IDFacultades) VALUES ('$programName', $programHighQuality, '$programCode_IES', '$programCodeSchool')";
+        $query = "INSERT INTO program (name, highQuality, idFaculty) VALUES ('$programName', $programHighQuality, '$programCodeSchool')";
         $objProgramController = new ConnectionController();
         $objProgramController->openDataBase(LOCALHOST, USER, PASSWORD, DATABASE);
         $objProgramController->runCommandSQL($query);
@@ -25,7 +26,7 @@ class ProgramController
 
     public function readAll()
     {
-        $query = "SELECT * FROM programas";
+        $query = "SELECT * FROM program";
         $objProgramController = new ConnectionController();
         $objProgramController->openDataBase(LOCALHOST, USER, PASSWORD, DATABASE);
         $res = $objProgramController->runSelect($query);
@@ -37,7 +38,7 @@ class ProgramController
     public function read()
     {
         $programCode = $this->objProgram->getProgramCode();
-        $query = "SELECT Idprogramas, Nombre, Altacalidad, Codsnies, IDFacultades FROM programas WHERE Idprogramas ='$programCode'";
+        $query = "SELECT idProgram, name, highQuality, idFaculty FROM program WHERE idProgram ='$programCode'";
         $objProgramController = new ConnectionController();
         $objProgramController->openDataBase(LOCALHOST, USER, PASSWORD, DATABASE);
         $res = $objProgramController->runSelect($query);
@@ -51,9 +52,8 @@ class ProgramController
         $programCode = $this->objProgram->getProgramCode();
         $programName = $this->objProgram->getProgramName();
         $programHighQuality = (int) $this->objProgram->getProgramHighQuality();
-        $programCode_IES = (int) $this->objProgram->getProgramCode_IES();
         $programCodeSchool = (int) $this->objProgram->getProgramCodeSchool();
-        $query = "UPDATE programas SET Idprogramas='$programCode', Nombre='$programName', Altacalidad=$programHighQuality, Codsnies='$programCode_IES', IDFacultades='$programCodeSchool' WHERE Idprogramas='$programCode'";
+        $query = "UPDATE program SET idProgram='$programCode', name='$programName', highQuality=$programHighQuality, idFaculty='$programCodeSchool' WHERE idProgram='$programCode'";
         $objProgramController = new ConnectionController();
         $objProgramController->openDataBase(LOCALHOST, USER, PASSWORD, DATABASE);
         $objProgramController->runCommandSQL($query);
@@ -63,7 +63,7 @@ class ProgramController
     public function delete()
     {
         $programCode = $this->objProgram->getProgramCode();
-        $query = "DELETE FROM programas WHERE Idprogramas ='$programCode'";
+        $query = "DELETE FROM program WHERE idProgram ='$programCode'";
         $objProgramController = new ConnectionController();
         $objProgramController->openDataBase(LOCALHOST, USER, PASSWORD, DATABASE);
         $objProgramController->runCommandSQL($query);

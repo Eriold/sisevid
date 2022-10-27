@@ -12,7 +12,7 @@ class EvidenceController
     {
         $nameEvidence = $this->ojbEvidence->getNameEvidence();
         $idArticle = (int) $this->ojbEvidence->getIdArticle();
-        $query = "INSERT INTO `evidencias` (`Idevidencias`, `Nombre`, `Idarticulos`) VALUES (NULL, '$nameEvidence', $idArticle);";
+        $query = "INSERT INTO `evidence` (`idEvidence`, `name`, `idArticle`) VALUES (NULL, '$nameEvidence', $idArticle);";
         $objEvidenceController = new ConnectionController();
         $objEvidenceController->openDataBase(LOCALHOST, USER, PASSWORD, DATABASE);
         $objEvidenceController->runCommandSQL($query);
@@ -21,7 +21,7 @@ class EvidenceController
 
     public function read()
     {
-        $query = "SELECT * FROM evidencias";
+        $query = "SELECT * FROM evidence";
         $objEvidenceController = new ConnectionController();
         $objEvidenceController->openDataBase(LOCALHOST, USER, PASSWORD, DATABASE);
         $resSet = $objEvidenceController->runSelect($query);
@@ -33,7 +33,7 @@ class EvidenceController
     {
         $nameEvidence = $this->ojbEvidence->getNameEvidence();
         $idArticle = $this->ojbEvidence->getIdArticle();
-        $query = "UPDATE evidencias SET ($nameEvidence, $idArticle)";
+        $query = "UPDATE evidence SET ($nameEvidence, $idArticle)";
         $objEvidenceController = new ConnectionController();
         $objEvidenceController->openDataBase(LOCALHOST, USER, PASSWORD, DATABASE);
         $objEvidenceController->runCommandSQL($query);
@@ -43,7 +43,7 @@ class EvidenceController
     public function delete()
     {
         $idEvidencias = $this->ojbEvidence->getIdEvidencias();
-        $query = "DELETE FROM evidencias WHERE idevidencias='$idEvidencias'";
+        $query = "DELETE FROM evidence WHERE idEvidence='$idEvidencias'";
         $objEvidenceController = new ConnectionController();
         $objEvidenceController->openDataBase(LOCALHOST, USER, PASSWORD, DATABASE);
         $objEvidenceController->runCommandSQL($query);
@@ -54,7 +54,7 @@ class EvidenceController
 
     public function allArticle()
     {
-        $query = "SELECT Idarticulos, Nombre FROM articulos";
+        $query = "SELECT idEvidence	, name FROM idArticle";
         $objArticlesController = new ConnectionController();
         $objArticlesController->openDataBase(LOCALHOST, USER, PASSWORD, DATABASE);
         $res = $objArticlesController->runSelect($query);

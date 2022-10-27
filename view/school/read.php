@@ -16,9 +16,9 @@ if ($schoolCode = trim($_GET["id"])) {
     $row = $objSchoolConnetion->read();
     if (count($row) > 0) {
         foreach ($row as $res) {
-            $schoolName = $res['Nombre'];
-            $schoolDean = $res['Decano'];
-            $schoolIES = $res['Ies_nombre'];
+            $schoolName = $res['name'];
+            $schoolDean = $res['dean'];
+            $schoolIES = $res['iesName'];
         }
     } else {
         header("location: ../error.php");

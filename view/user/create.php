@@ -102,7 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     <option selected value="">Seleccionar...</option>
                                     <?php
                                     foreach ($row as $item) {
-                                        echo '<option value="', $item['Idroles'], '">', $item['Nombre'], '</option>';
+                                        echo '<option value="', $item['idRol'], '">', $item['name'], '</option>';
                                     }
                                     ?>
                                 </select>

@@ -70,20 +70,20 @@ $userCode_error = true;
                         echo "<tbody>";
                         foreach ($row as $res) {
                             if ($userCode != '') {
-                                if ($userCode == $res['Idusuarios']) {
+                                if ($userCode == $res['idUser']) {
                                     echo "<tr>";
-                                    echo "<td>" . $res['Idusuarios'] . "</td>";
-                                    echo "<td>" . $res['Usuario'] . "</td>";
-                                    echo "<td>" . $res['Contrasena'] . "</td>";
-                                    echo "<td>" . $res['Correo'] . "</td>";
-                                    echo "<td>" . $res['Idroles'] . "</td>";
+                                    echo "<td>" . $res['idUser'] . "</td>";
+                                    echo "<td>" . $res['user'] . "</td>";
+                                    echo "<td>" . $res['password'] . "</td>";
+                                    echo "<td>" . $res['email'] . "</td>";
+                                    echo "<td>" . $res['idRol'] . "</td>";
                                     echo "<td>";
-                                    echo '<a href="read.php?id=' . $res['Idusuarios'] . '" class="mr-3" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
-                                    echo '<a href="update.php?id=' . $res['Idusuarios'] . '" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
-                                    echo '<a href="delete.php?id=' . $res['Idusuarios'] . '" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
+                                    echo '<a href="read.php?id=' . $res['idUser'] . '" class="mr-3" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
+                                    echo '<a href="update.php?id=' . $res['idUser'] . '" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
+                                    echo '<a href="delete.php?id=' . $res['idUser'] . '" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
                                     echo "</td>";
                                     echo "</tr>";
-                                    if ($res['Idusuarios'] === null) {
+                                    if ($res['idUser'] === null) {
                                         $userCode_error = true;
                                     } else {
                                         $userCode_error = false;
@@ -91,15 +91,15 @@ $userCode_error = true;
                                 }
                             } else {
                                 echo "<tr>";
-                                echo "<td>" . $res['Idusuarios'] . "</td>";
-                                echo "<td>" . $res['Usuario'] . "</td>";
-                                echo "<td>" . $res['Contrasena'] . "</td>";
-                                echo "<td>" . $res['Correo'] . "</td>";
-                                echo "<td>" . $res['Idroles'] . "</td>";
+                                echo "<td>" . $res['idUser'] . "</td>";
+                                echo "<td>" . $res['user'] . "</td>";
+                                echo "<td>" . $res['password'] . "</td>";
+                                echo "<td>" . $res['email'] . "</td>";
+                                echo "<td>" . $res['idRol'] . "</td>";
                                 echo "<td>";
-                                echo '<a href="read.php?id=' . $res['Idusuarios'] . '" class="mr-3" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
-                                echo '<a href="update.php?id=' . $res['Idusuarios'] . '" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
-                                echo '<a href="delete.php?id=' . $res['Idusuarios'] . '" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
+                                echo '<a href="read.php?id=' . $res['idUser'] . '" class="mr-3" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
+                                echo '<a href="update.php?id=' . $res['idUser'] . '" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
+                                echo '<a href="delete.php?id=' . $res['idUser'] . '" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
                                 echo "</td>";
                                 echo "</tr>";
                                 $userCode_error = false;

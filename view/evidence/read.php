@@ -21,9 +21,9 @@ if ($IdEvidence = trim($_GET["id"])) {
     $resGet = $objEvidenceController->read();
     if (count($resGet) > 0) {
         foreach ($resGet as $item) {
-            $evidenceId = $item["Idevidencias"];
-            $evidenceName = $item["Nombre"];
-            $evidenceArticle = $item["Idarticulos"];
+            $evidenceId = $item["idEvidence"];
+            $evidenceName = $item["name"];
+            $evidenceArticle = $item["idArticle"];
         }
     } else {
         header("location: ../error.php");
@@ -62,8 +62,8 @@ if ($IdEvidence = trim($_GET["id"])) {
                                 <select class="custom-select form-control" id="inputGroupSelect02" name="dpdtxtEvidenceArticle" disabled>
                                     <?php
                                     foreach ($row as $item) {
-                                        if ($item['Idarticulos'] == $evidenceArticle) {
-                                            echo '<option value="', $item['Idarticulos'], '">', $item['Idarticulos'], '. ', $item['Nombre'], '</option>';
+                                        if ($item['idEvidence'] == $evidenceArticle) {
+                                            echo '<option value="', $item['idEvidence'], '">', $item['idArticle'], '. ', $item['name'], '</option>';
                                         }
                                     }
                                     ?>

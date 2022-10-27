@@ -70,19 +70,19 @@ $schoolCode_error = true;
                         echo "<tbody>";
                         foreach ($row as $res) {
                             if ($schoolCode != '') {
-                                if ($schoolCode == $res['Idfacultades']) {
+                                if ($schoolCode == $res['idFaculty']) {
                                     echo "<tr>";
-                                    echo "<td>" . $res['Idfacultades'] . "</td>";
-                                    echo "<td>" . $res['Nombre'] . "</td>";
-                                    echo "<td>" . $res['Decano'] . "</td>";
-                                    echo "<td>" . $res['Ies_nombre'] . "</td>";
+                                    echo "<td>" . $res['idFaculty'] . "</td>";
+                                    echo "<td>" . $res['name'] . "</td>";
+                                    echo "<td>" . $res['dean'] . "</td>";
+                                    echo "<td>" . $res['iesName'] . "</td>";
                                     echo "<td>";
-                                    echo '<a href="read.php?id=' . $res['Idfacultades'] . '" class="mr-3" title="Ver información" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
-                                    echo '<a href="update.php?id=' . $res['Idfacultades'] . '" class="mr-3" title="Actualizar información" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
-                                    echo '<a href="delete.php?id=' . $res['Idfacultades'] . '" title="Borrar información" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
+                                    echo '<a href="read.php?id=' . $res['idFaculty'] . '" class="mr-3" title="Ver información" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
+                                    echo '<a href="update.php?id=' . $res['idFaculty'] . '" class="mr-3" title="Actualizar información" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
+                                    echo '<a href="delete.php?id=' . $res['idFaculty'] . '" title="Borrar información" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
                                     echo "</td>";
                                     echo "</tr>";
-                                    if ($res['Idfacultades'] === null) {
+                                    if ($res['idFaculty'] === null) {
                                         $schoolCode_error = true;
                                     } else {
                                         $schoolCode_error = false;
@@ -90,14 +90,14 @@ $schoolCode_error = true;
                                 }
                             } else {
                                 echo "<tr>";
-                                echo "<td>" . $res['Idfacultades'] . "</td>";
-                                echo "<td>" . $res['Nombre'] . "</td>";
-                                echo "<td>" . $res['Decano'] . "</td>";
-                                echo "<td>" . $res['Ies_nombre'] . "</td>";
+                                echo "<td>" . $res['idFaculty'] . "</td>";
+                                echo "<td>" . $res['name'] . "</td>";
+                                echo "<td>" . $res['dean'] . "</td>";
+                                echo "<td>" . $res['iesName'] . "</td>";
                                 echo "<td>";
-                                echo '<a href="read.php?id=' . $res['Idfacultades'] . '" class="mr-3" title="Ver información" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
-                                echo '<a href="update.php?id=' . $res['Idfacultades'] . '" class="mr-3" title="Actualizar información" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
-                                echo '<a href="delete.php?id=' . $res['Idfacultades'] . '" title="Borrar información" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
+                                echo '<a href="read.php?id=' . $res['idFaculty'] . '" class="mr-3" title="Ver información" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
+                                echo '<a href="update.php?id=' . $res['idFaculty'] . '" class="mr-3" title="Actualizar información" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
+                                echo '<a href="delete.php?id=' . $res['idFaculty'] . '" title="Borrar información" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
                                 echo "</td>";
                                 echo "</tr>";
                                 $schoolCode_error = false;

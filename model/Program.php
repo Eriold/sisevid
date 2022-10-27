@@ -3,19 +3,16 @@ class Program{
     private string $programCode;
     private string $programName;
     private string $programHighQuality;
-    private string $programCode_IES;
     private int $programCodeSchool;
 
     function __construct(string $ProgramCode,
     string $ProgramName,
-    string $ProgramHighQuality,
-    string $ProgramCode_IES, 
+    string $ProgramHighQuality, 
     int $ProgramCodeSchool)
     {
         $this->programCode = $ProgramCode;
         $this->programName = $ProgramName;
         $this->programHighQuality = $ProgramHighQuality;
-        $this->programCode_IES = $ProgramCode_IES;
         $this->programCodeSchool = $ProgramCodeSchool;
     }
 
@@ -75,26 +72,6 @@ class Program{
     public function setProgramHighQuality($programHighQuality)
     {
         $this->programHighQuality = $programHighQuality;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of programCode_IES
-     */ 
-    public function getProgramCode_IES()
-    {
-        return $this->programCode_IES;
-    }
-
-    /**
-     * Set the value of programCode_IES
-     *
-     * @return  self
-     */ 
-    public function setProgramCode_IES($programCode_IES)
-    {
-        $this->programCode_IES = $programCode_IES;
 
         return $this;
     }

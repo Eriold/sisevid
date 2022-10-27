@@ -62,7 +62,6 @@ $idProgramas_error = true;
                         echo "<th>ID Programas</th>";
                         echo "<th>Nombre Programa</th>";
                         echo "<th>Alta Calidad</th>";
-                        echo "<th>COD IES</th>";
                         echo "<th>ID Facultades</th>";
                         echo "<th>Acciones</th>";
                         echo "</tr>";
@@ -70,20 +69,19 @@ $idProgramas_error = true;
                         echo "<tbody>";
                         foreach ($row as $res) {
                             if ($idProgramas != '') {
-                                if ($idProgramas == $res['Idprogramas']) {
+                                if ($idProgramas == $res['idProgram']) {
                                     echo "<tr>";
-                                    echo "<td>" . $res['Idprogramas'] . "</td>";
-                                    echo "<td>" . $res['Nombre'] . "</td>";
-                                    echo "<td>" . $res['Altacalidad'] . "</td>";
-                                    echo "<td>" . $res['Codsnies'] . "</td>";
-                                    echo "<td>" . $res['IDFacultades'] . "</td>";
+                                    echo "<td>" . $res['idProgram'] . "</td>";
+                                    echo "<td>" . $res['name'] . "</td>";
+                                    echo "<td>" . $res['highQuality'] . "</td>";
+                                    echo "<td>" . $res['idFaculty'] . "</td>";
                                     echo "<td>";
-                                    echo '<a href="read.php?id=' . $res['Idprogramas'] . '" class="mr-3" title="Ver información" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
-                                    echo '<a href="update.php?id=' . $res['Idprogramas'] . '" class="mr-3" title="Actualizar información" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
-                                    echo '<a href="delete.php?id=' . $res['Idprogramas'] . '" title="Borrar información" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
+                                    echo '<a href="read.php?id=' . $res['idProgram'] . '" class="mr-3" title="Ver información" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
+                                    echo '<a href="update.php?id=' . $res['idProgram'] . '" class="mr-3" title="Actualizar información" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
+                                    echo '<a href="delete.php?id=' . $res['idProgram'] . '" title="Borrar información" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
                                     echo "</td>";
                                     echo "</tr>";
-                                    if ($res['Idprogramas'] === null) {
+                                    if ($res['idProgram'] === null) {
                                         $idProgramas_error = true;
                                     } else {
                                         $idProgramas_error = false;
@@ -91,15 +89,14 @@ $idProgramas_error = true;
                                 }
                             } else {
                                 echo "<tr>";
-                                echo "<td>" . $res['Idprogramas'] . "</td>";
-                                echo "<td>" . $res['Nombre'] . "</td>";
-                                echo "<td>" . $res['Altacalidad'] . "</td>";
-                                echo "<td>" . $res['Codsnies'] . "</td>";
-                                echo "<td>" . $res['IDFacultades'] . "</td>";
+                                echo "<td>" . $res['idProgram'] . "</td>";
+                                echo "<td>" . $res['name'] . "</td>";
+                                echo "<td>" . $res['highQuality'] . "</td>";
+                                echo "<td>" . $res['idFaculty'] . "</td>";
                                 echo "<td>";
-                                echo '<a href="read.php?id=' . $res['Idprogramas'] . '" class="mr-3" title="Ver información" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
-                                echo '<a href="update.php?id=' . $res['Idprogramas'] . '" class="mr-3" title="Actualizar información" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
-                                echo '<a href="delete.php?id=' . $res['Idprogramas'] . '" title="Borrar información" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
+                                echo '<a href="read.php?id=' . $res['idProgram'] . '" class="mr-3" title="Ver información" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
+                                echo '<a href="update.php?id=' . $res['idProgram'] . '" class="mr-3" title="Actualizar información" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
+                                echo '<a href="delete.php?id=' . $res['idProgram'] . '" title="Borrar información" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
                                 echo "</td>";
                                 echo "</tr>";
                                 $idProgramas_error = false;

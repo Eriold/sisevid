@@ -63,12 +63,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $objUserController = new UserController($objUser);
         $resGet = $objUserController->read();
         foreach ($resGet as $item) {
-            if ($item["Usuario"] && $item["Contrasena"] && $item["Correo"] && $item["Idroles"]) {
-                $userCode = $item["Idusuarios"];
-                $userUser = $item["Usuario"];
-                $userPassword = $item["Contrasena"];
-                $userEmail = $item["Correo"];
-                $idRoles = $item["Idroles"];
+            if ($item["user"] && $item["password"] && $item["email"] && $item["idRol"]) {
+                $userCode = $item["idUser"];
+                $userUser = $item["user"];
+                $userPassword = $item["password"];
+                $userEmail = $item["email"];
+                $idRoles = $item["idRol"];
             } else {
                 header("location: error.php");
             }
@@ -115,14 +115,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <select class="custom-select form-control <?php echo (!empty($idRoles_error)) ? 'is-invalid' : ''; ?>" id="inputGroupSelect02" name="dpdtxtProgramCodeSchool">
                                     <?php
                                     foreach ($row as $item) {
-                                        if ($item['Idroles'] == $idRoles) {
-                                            echo '<option value="', $item['Idroles'], '">', $item['Nombre'], '</option>';
+                                        if ($item['idRol'] == $idRoles) {
+                                            echo '<option value="', $item['idRol'], '">', $item['name'], '</option>';
                                         }
                                     }
                                     ?>
                                     <?php
                                     foreach ($row as $item) {
-                                        echo '<option value="', $item['Idroles'], '">', $item['Nombre'], '</option>';
+                                        echo '<option value="', $item['idRol'], '">', $item['name'], '</option>';
                                     }
                                     ?>
                                 </select>
@@ -140,5 +140,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </div>
 </body>
-
 </html>

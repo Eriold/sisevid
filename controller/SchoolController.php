@@ -12,11 +12,10 @@ class SchoolController
 
     public function create()
     {
-        $schoolCode = $this->objSchool->getSchoolCode();
         $schoolName = $this->objSchool->getSchoolName();
         $schoolDean = $this->objSchool->getSchoolDean();
         $schoolIES = $this->objSchool->getSchoolIES();
-        $query = "INSERT INTO Facultades (Nombre, Decano, Ies_nombre)VALUES('$schoolName','$schoolDean','$schoolIES')";
+        $query = "INSERT INTO faculty (name, dean, iesName)VALUES('$schoolName','$schoolDean','$schoolIES')";
         $objSchoolController = new ConnectionController();
         $objSchoolController->openDataBase(LOCALHOST, USER, PASSWORD, DATABASE);
         $objSchoolController->runCommandSQL($query);
@@ -26,7 +25,7 @@ class SchoolController
     public function read()
     {
         $schoolCode = $this->objSchool->getSchoolCode();
-        $query = "SELECT Idfacultades, Nombre, Decano, Ies_nombre FROM facultades WHERE Idfacultades ='$schoolCode'";
+        $query = "SELECT idFaculty, name, dean, iesName FROM faculty WHERE idFaculty ='$schoolCode'";
         $objSchoolController = new ConnectionController();
         $objSchoolController->openDataBase(LOCALHOST, USER, PASSWORD, DATABASE);
         $res = $objSchoolController->runSelect($query);
@@ -38,7 +37,7 @@ class SchoolController
     public function readAll()
     {
 
-        $query = "SELECT * FROM facultades";
+        $query = "SELECT * FROM faculty";
         $objSchoolController = new ConnectionController();
         $objSchoolController->openDataBase(LOCALHOST, USER, PASSWORD, DATABASE);
         $res = $objSchoolController->runSelect($query);
@@ -53,7 +52,7 @@ class SchoolController
         $schoolName = $this->objSchool->getSchoolName();
         $schoolDean = $this->objSchool->getSchoolDean();
         $schoolIES = $this->objSchool->getSchoolIES();
-        $query = "UPDATE facultades SET Idfacultades='$schoolCode', Nombre='$schoolName', Decano='$schoolDean', Ies_nombre='$schoolIES' WHERE Idfacultades='$schoolCode'";
+        $query = "UPDATE faculty SET idFaculty='$schoolCode', name='$schoolName', dean='$schoolDean', iesName='$schoolIES' WHERE idFaculty='$schoolCode'";
         $objSchoolController = new ConnectionController();
         $objSchoolController->openDataBase(LOCALHOST, USER, PASSWORD, DATABASE);
         $objSchoolController->runCommandSQL($query);

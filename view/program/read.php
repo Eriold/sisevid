@@ -16,10 +16,9 @@ if ($programCode = trim($_GET["id"])) {
     $row = $objProgramConnetion->read();
     if (count($row) > 0) {
         foreach ($row as $res) {
-            $programName = $res['Nombre'];
-            $programHighQuality = $res['Altacalidad'];
-            $programCode_IES = $res['Codsnies'];
-            $programCodeSchool = $res['IDFacultades'];
+            $programName = $res['name'];
+            $programHighQuality = $res['highQuality'];
+            $programCodeSchool = $res['idFaculty'];
         }
     } else {
         header("location: ../error.php");
@@ -52,10 +51,6 @@ if ($programCode = trim($_GET["id"])) {
                         <div class="form-group">
                             <label>Alta Calidad</label>
                             <input type="text" class="form-control" value="<?php echo $programHighQuality ?>" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label>Codigo IES</label>
-                            <input type="text" class="form-control" value="<?php echo $programCode_IES ?>" readonly>
                         </div>
                         <div class="form-group">
                             <label>Codigo Facultad</label>

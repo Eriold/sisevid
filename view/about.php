@@ -20,7 +20,73 @@ $menuCode_error = true;
 
 <body>
     <?php include('./components/headergeneral.php'); ?>
-    <div class="wrapper">
+
         <div class="container-fluid">
             <div class="row">
                 <h1>Quienes somos</h1>
+
+            </div>
+        </div>
+    <ul class="cards">
+  <li>
+    <a href="" class="card">
+      <img src="https://i.imgur.com/7lHVA4t.jpg" class="card__image" alt="" />
+      <div class="card__overlay">
+        <div class="card__header">
+          <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                     
+          <div class="card__header-text">
+            <h3 class="card__title">Alejandra Guirales</h3>            
+            <span class="card__status">Desarrolladora Aprendiz</span>
+          </div>
+        </div>
+        <p class="card__description">Amante a los gatitos, me gusta jugar videojuegos y leer thrillers</p>
+      </div>
+    </a>      
+  </li>
+  <li>
+    <a href="" class="card">
+      <img src="https://imgur.com/lz2Fdd4.jpg" class="card__image" alt="" />
+      <div class="card__overlay">        
+        <div class="card__header">
+          <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                 
+          <div class="card__header-text">
+            <h3 class="card__title">Daniel Camilo Montoya</h3>
+            <span class="card__status">Desarrollador Semi senior React</span>
+          </div>
+        </div>
+        <p class="card__description">Apasionado con todo, menos las fiestas y el trago. Mi mejor momento es beber un café y escuchar podcasts</p>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a href="" class="card">
+      <img src="https://imgur.com/IIzz8yH.jpg" class="card__image" alt="" />
+      <div class="card__overlay">
+        <div class="card__header">
+          <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                     
+          <div class="card__header-text">
+            <h3 class="card__title">David Fernando Briceño</h3>
+            <span class="card__status">Desarrollador junior</span>
+          </div>
+        </div>
+        <p class="card__description">Cree en ti mismo en algún momento serás recomendado sin dudar de las cosas</p>
+      </div>
+    </a>
+  </li>
+  <!-- <li>
+    <a href="" class="card">
+      <img src="https://imgur.com/lAxj3oh.jpg" class="card__image" alt="" />
+      <div class="card__overlay">
+        <div class="card__header">
+          <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                 
+          <div class="card__header-text">
+            <h3 class="card__title">Andres</h3>
+            <span class="card__status">Desarrollador</span>
+          </div>          
+        </div>
+        <p class="card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, blanditiis?</p>
+      </div>
+    </a>
+  </li>     -->
+</ul>
+</body>

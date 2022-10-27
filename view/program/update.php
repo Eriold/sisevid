@@ -59,12 +59,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $objProgramController = new ProgramController($objProgram);
         $resGet = $objProgramController->read();
         foreach ($resGet as $item) {
-            if ($item["Idprogramas"] && $item["Nombre"] && $item["Codsnies"] && $item["IDFacultades"]) {
-                $programCode = $item["Idprogramas"];
-                $programName = $item["Nombre"];
-                $programHighQuality = $item["Altacalidad"];
-                $programCode_IES = $item["Codsnies"];
-                $programCodeSchool = $item["IDFacultades"];
+            if ($item["idProgram"] && $item["name"] && $item["highQuality"] && $item["idFaculty"]) {
+                $programCode = $item["idProgram"];
+                $programName = $item["name"];
+                $programHighQuality = $item["highQuality"];
+                $programCodeSchool = $item["idFaculty"];
             } else {
                 header("location: ../error.php");
             }
@@ -119,24 +118,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Codigo IES</label>
-                            <input type="text" name="txtProgramCode_IES" class="form-control <?php echo (!empty($programCode_IES_error)) ? 'is-invalid' : ''; ?>" value="<?php echo $programCode_IES ?>">
-                            <span class="invalid-feedback"><?php echo $programCode_IES_error; ?></span>
-                        </div>
-                        <div class="form-group">
                             <label>Codigo de la Facultad</label>
                             <div class="input-group mb-3">
                                 <select class="custom-select form-control <?php echo (!empty($programCodeSchool_error)) ? 'is-invalid' : ''; ?>" id="inputGroupSelect02" name="dpdtxtProgramCodeSchool">
                                     <?php
                                     foreach ($row as $item) {
-                                        if ($item['Idfacultades'] == $programCodeSchool) {
-                                            echo '<option value="', $item['Idfacultades'], '">', $item['Ies_nombre'], '</option>';
+                                        if ($item['idFaculty'] == $programCodeSchool) {
+                                            echo '<option value="', $item['idFaculty'], '">', $item['iesName'], '</option>';
                                         }
                                     }
                                     ?>
                                     <?php
                                     foreach ($row as $item) {
-                                        echo '<option value="', $item['Idfacultades'], '">', $item['Ies_nombre'], '</option>';
+                                        echo '<option value="', $item['idFaculty'], '">', $item['iesName'], '</option>';
                                     }
                                     ?>
                                 </select>

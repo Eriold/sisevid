@@ -68,15 +68,15 @@ $IdEvidencia_error = true;
                         echo "<tbody>";
                         foreach ($row as $res) {
                             if ($IdEvidencia != '') {
-                                if ($IdEvidencia == $res['Idevidencias']) {
+                                if ($IdEvidencia == $res['idEvidence']) {
                                     echo "<tr>";
-                                    echo "<td>" . $res['Idevidencias'] . "</td>";
-                                    echo "<td>" . $res['Nombre'] . "</td>";
-                                    echo "<td>" . $res['Idarticulos'] . "</td>";
+                                    echo "<td>" . $res['idEvidence'] . "</td>";
+                                    echo "<td>" . $res['name'] . "</td>";
+                                    echo "<td>" . $res['idArticle'] . "</td>";
                                     echo "<td>";
-                                    echo '<a href="read.php?id=' . $res['Idevidencias'] . '" class="mr-3" title="Ver información" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
-                                    echo '<a href="update.php?id=' . $res['Idevidencias'] . '" class="mr-3" title="Actualizar información" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
-                                    echo '<a href="delete.php?id=' . $res['Idevidencias'] . '" title="Borrar información" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
+                                    echo '<a href="read.php?id=' . $res['idEvidence'] . '" class="mr-3" title="Ver información" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
+                                    echo '<a href="update.php?id=' . $res['idEvidence'] . '" class="mr-3" title="Actualizar información" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
+                                    echo '<a href="delete.php?id=' . $res['idEvidence'] . '" title="Borrar información" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
                                     echo "</td>";
                                     echo "</tr>";
                                     if ($res['Idevidencias'] === null) {
@@ -87,13 +87,13 @@ $IdEvidencia_error = true;
                                 }
                             } else {
                                 echo "<tr>";
-                                echo "<td>" . $res['Idevidencias'] . "</td>";
-                                echo "<td>" . $res['Nombre'] . "</td>";
-                                echo "<td>" . $res['Idarticulos'] . "</td>";
+                                echo "<td>" . $res['idEvidence'] . "</td>";
+                                echo "<td>" . $res['name'] . "</td>";
+                                echo "<td>" . $res['idArticle'] . "</td>";
                                 echo "<td>";
-                                echo '<a href="read.php?id=' . $res['Idevidencias'] . '" class="mr-3" title="Ver información" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
-                                echo '<a href="update.php?id=' . $res['Idevidencias'] . '" class="mr-3" title="Actualizar información" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
-                                echo '<a href="delete.php?id=' . $res['Idevidencias'] . '" title="Borrar información" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
+                                echo '<a href="read.php?id=' . $res['idEvidence'] . '" class="mr-3" title="Ver información" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
+                                echo '<a href="update.php?id=' . $res['idEvidence'] . '" class="mr-3" title="Actualizar información" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
+                                echo '<a href="delete.php?id=' . $res['idEvidence'] . '" title="Borrar información" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
                                 echo "</td>";
                                 echo "</tr>";
                                 $IdEvidencia_error = false;

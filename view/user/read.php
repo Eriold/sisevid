@@ -21,11 +21,11 @@ if ($userCode = trim($_GET["id"])) {
     $resGet = $objUserController->read();
     if (count($resGet) > 0) {
         foreach ($resGet as $res) {
-            $userCode = $res["Idusuarios"];
-            $userUser = $res['Usuario'];
-            $userPassword = $res['Contrasena'];
-            $userEmail = $res['Correo'];
-            $idRoles = $res['Idroles'];
+            $userCode = $res["idUser"];
+            $userUser = $res['user'];
+            $userPassword = $res['password'];
+            $userEmail = $res['email'];
+            $idRoles = $res['idRol'];
         }
     } else {
         header("location: error.php");
@@ -69,8 +69,8 @@ if ($userCode = trim($_GET["id"])) {
                                 <select class="custom-select form-control" id="inputGroupSelect02" name="dpdtxtProgramCodeSchool" disabled>
                                     <?php
                                     foreach ($row as $item) {
-                                        echo "<option value=''>", $item['Nombre'], "</option>";
-                                        if ($item['Idroles'] == $idRoles) {
+                                        echo "<option value=''>", $item['name'], "</option>";
+                                        if ($item['idRol'] == $idRoles) {
                                         }
                                     }
                                     ?>

@@ -50,11 +50,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $objSchoolController = new SchoolController($objSchool);
         $resGet = $objSchoolController->read();
         foreach ($resGet as $item) {
-            if ($item["Nombre"] && $item["Decano"] && $item["Ies_nombre"]) {
-                $schoolCode = $item["Idfacultades"];
-                $schoolName = $item["Nombre"];
-                $schoolDean = $item["Decano"];
-                $schoolIES = $item["Ies_nombre"];
+            if ($item["name"] && $item["dean"] && $item["iesName"]) {
+                $schoolCode = $item["idFaculty"];
+                $schoolName = $item["name"];
+                $schoolDean = $item["dean"];
+                $schoolIES = $item["iesName"];
             } else {
                 header("location: ../error.php");
             }
