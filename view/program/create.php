@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     //check input error is empty to insert
-    if (empty($programName_error) && empty($programCode_IES_error) && empty($programCodeSchool_error) && empty($programCodeSchool_error) ) {
+    if (empty($programName_error) && empty($programCode_IES_error) && empty($programCodeSchool_error) && empty($programCodeSchool_error)) {
         $objProgram = new Program('', $programName, $programHighQuality, $programCode_IES, $programCodeSchool);
         $objProgramConnetion = new ProgramController($objProgram);
         $objProgramConnetion->create();
@@ -57,6 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <?php include('../components/head.php') ?>
 
 <body>
+    <?php include('../components/header.php') ?>
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
