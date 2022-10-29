@@ -96,20 +96,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </div>
 
-    <script>
-        function validationEmail($inputEmail){
-            var expReg= /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9]*[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
+    <script type="text/javascript">
+        function validationEmail(){
+            var emailField = document.getElementById('txtEmail');
+            var expReg= /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,1000})+$/;
             var isTrue = expReg.test($inputEmail);
-            if(isTrue==false) {
-                alert('Email incorrect');
-            }
+        if( validEmail.test(expReg.value) ){
+		    return true;
+	    }else{
+		    alert('Correo incorrecto');
+		    return false;
+	        }
         }
-        function validationPassword ($inputPassword) {
-            var expReg = /(?=.*[0-9])(?=.*[A-Z])[A-Za-z0-9]{5,1000}$/
+        function validationPassword () {
+            var password = document.getElementById('txtPassword');
+            var expReg = /(?=.*[0-9])(?=.*[A-Z])[A-Za-z0-9]{5,1000}+$/;
             var isTrue = expReg.test($inputPassword);
-            if(isTrue==false) {
-                alert('Password incorrect');
-            }
+            if( validEmail.test(expReg.value) ){
+		        return true;
+	        }else{
+		        alert('Contraseña incorrecta');
+		    return false;
+	        }
         }
-
     </script>
