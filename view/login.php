@@ -105,7 +105,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
         function validationPassword ($inputPassword) {
-            var expReg = /^(?=.[a-z])(?=.[A-Z])(?=.*\d)[a-zA-Z\d]{|}$/
+            var expReg = /(?=.*[0-9])(?=.*[A-Z])[A-Za-z0-9]{5,1000}$/
             var isTrue = expReg.test($inputPassword);
             if(isTrue==false) {
                 alert('Password incorrect');
