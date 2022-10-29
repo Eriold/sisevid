@@ -20,13 +20,6 @@ $menuCode_error = true;
 
 <body>
     <?php include('./components/headergeneral.php'); ?>
-
-        <div class="container-fluid">
-            <div class="row">
-                <h1>Quienes somos</h1>
-
-            </div>
-        </div>
     <ul class="cards">
   <li>
     <a href="" class="card">
@@ -73,20 +66,20 @@ $menuCode_error = true;
       </div>
     </a>
   </li>
-  <!-- <li>
+  <li>
     <a href="" class="card">
-      <img src="https://imgur.com/lAxj3oh.jpg" class="card__image" alt="" />
+      <img src="https://imgur.com/NSCtvg8.jpg" class="card__image" alt="" />
       <div class="card__overlay">
         <div class="card__header">
           <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                 
           <div class="card__header-text">
-            <h3 class="card__title">Andres</h3>
+            <h3 class="card__title">Andres Zapata</h3>
             <span class="card__status">Desarrollador</span>
           </div>          
         </div>
-        <p class="card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, blanditiis?</p>
+        <p class="card__description">Estudiante por los laditos y gamer :v</p>
       </div>
     </a>
-  </li>     -->
+  </li>    
 </ul>
 </body>

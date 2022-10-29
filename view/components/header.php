@@ -90,7 +90,7 @@ if (!isset($_SESSION['id_user']) && !isset($_SESSION['name_user'])) {
     </div>
     <li><a class="<?php echo $home ?>" id="#home" href="<?php echo $load ?>view/index.php">Inicio</a></li>
     <li><a class="<?php echo $evidence ?>" id="#evidence" href="<?php echo $load ?>view/evidence/index.php">Evidencia</a></li>
-    <li><a class="<?php echo $menu ?>" id="#menu" href="<?php echo $load ?>view/menu/index.php">Menu</a></li>
+    <!-- <li><a class="<?php echo $menu ?>" id="#menu" href="<?php echo $load ?>view/menu/index.php">Menu</a></li> -->
     <li><a class="<?php echo $programs ?>" id="#program" href="<?php echo $load ?>view/program/index.php">Programas</a></li>
     <li><a class="<?php echo $school ?>" id="#school" href="<?php echo $load ?>view/school/index.php">Facultades</a></li>
     <li><a class="<?php echo $users ?>" id="#user" href="<?php echo $load ?>view/user/index.php">Usuarios</a></li>
