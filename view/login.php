@@ -97,16 +97,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 
     <script>
-        function validationEmail($email){
+        function validationEmail($inputEmail){
             var expReg= /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9]*[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
-            var isTrue = expReg.test($email);
+            var isTrue = expReg.test($inputEmail);
             if(isTrue==false) {
                 alert('Email incorrect');
             }
         }
-        function validationPassword (password) {
+        function validationPassword ($inputPassword) {
             var expReg = /^(?=.[a-z])(?=.[A-Z])(?=.*\d)[a-zA-Z\d]{|}$/
-            var isTrue = expReg.test($password);
+            var isTrue = expReg.test($inputPassword);
             if(isTrue==false) {
                 alert('Password incorrect');
             }
