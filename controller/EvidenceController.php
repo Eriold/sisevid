@@ -54,7 +54,7 @@ class EvidenceController
 
     public function allArticle()
     {
-        $query = "SELECT idEvidence	, name FROM idArticle";
+        $query = "SELECT idArticle	, name FROM article";
         $objArticlesController = new ConnectionController();
         $objArticlesController->openDataBase(LOCALHOST, USER, PASSWORD, DATABASE);
         $res = $objArticlesController->runSelect($query);

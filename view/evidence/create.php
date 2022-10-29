@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     <option selected>Seleccionar...</option>
                                     <?php
                                     foreach ($row as $item) {
-                                        echo '<option value="', $item['Idarticulos'], '">', $item['Idarticulos'], '. ', $item['Nombre'], '</option>';
+                                        echo '<option value="', $item['idArticle'], '">', $item['idArticle'], '. ', $item['name'], '</option>';
                                     }
                                     ?>
                                 </select>

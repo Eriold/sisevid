@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else {
     if (isset($_GET["id"]) && !empty(trim($_GET["id"]))) {
         $id = trim($_GET["id"]);
-        $objProgram = new Program($id, "", "", "", 0);
+        $objProgram = new Program($id, "", "", 0);
         $objProgramController = new ProgramController($objProgram);
         $resGet = $objProgramController->read();
         foreach ($resGet as $item) {

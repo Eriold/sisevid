@@ -29,12 +29,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $programHighQuality = trim($_POST["txtProgramHighQuality"]);
 
-    $inputProgramCode_IES = trim($_POST["txtProgramCode_IES"]);
-    if (empty($inputProgramCode_IES)) {
-        $programCode_IES_error = "Debe ingresar el codigo IES";
-    } else {
-        $programCode_IES = $inputProgramCode_IES;
-    }
     $inputProgramCodeSchool = trim($_POST["dpdtxtProgramCodeSchool"]);
     if ($inputProgramCodeSchool == 'Seleccionar...') {
         $programCodeSchool_error = "Debe ingresar el codigo de la facultad";
@@ -44,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     //check input error is empty to insert
     if (empty($programName_error) && empty($programCode_IES_error) && empty($programCodeSchool_error) && empty($programCodeSchool_error)) {
-        $objProgram = new Program('', $programName, $programHighQuality, $programCode_IES, $programCodeSchool);
+        $objProgram = new Program('', $programName, $programHighQuality, $programCodeSchool);
         $objProgramConnetion = new ProgramController($objProgram);
         $objProgramConnetion->create();
         header("location: index.php");

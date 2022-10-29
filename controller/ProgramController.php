@@ -53,7 +53,7 @@ class ProgramController
         $programName = $this->objProgram->getProgramName();
         $programHighQuality = (int) $this->objProgram->getProgramHighQuality();
         $programCodeSchool = (int) $this->objProgram->getProgramCodeSchool();
-        $query = "UPDATE program SET idProgram='$programCode', name='$programName', highQuality=$programHighQuality, idFaculty='$programCodeSchool' WHERE idProgram='$programCode'";
+        $query = "UPDATE program SET idProgram='$programCode', name='$programName', highQuality=$programHighQuality, idFaculty=$programCodeSchool WHERE idProgram='$programCode'";
         $objProgramController = new ConnectionController();
         $objProgramController->openDataBase(LOCALHOST, USER, PASSWORD, DATABASE);
         $objProgramController->runCommandSQL($query);

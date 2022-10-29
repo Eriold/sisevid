@@ -29,6 +29,8 @@ if (count($testArray) > 3) {
     <link rel="stylesheet" href="<?php echo $load ?>view/assets/css/portal.css" />
     <link rel="stylesheet" href="<?php echo $load ?>view/assets/css/demo.css" />
     <link rel="stylesheet" href="<?php echo $load ?>view/assets/css/about.css" />
+    <link rel="stylesheet" href="<?php echo $load ?>view/assets/css/welcome.css" />
+
     <style>
         .wrapper {
             /* width: 850px; */

@@ -52,7 +52,7 @@ $idProgramas_error = true;
                     include('../../controller/ProgramController.php');
 
                     // Attempt select query execution
-                    $objProgram = new Program('', '', '', '', 0);
+                    $objProgram = new Program('', '', '', 0);
                     $objProgramConnection = new ProgramController($objProgram);
                     $row = $objProgramConnection->readAll();
                     if ($row > 0) {
