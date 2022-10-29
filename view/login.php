@@ -95,3 +95,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         </div>
     </div>
+    <script>
+        console.log('HOLA DAVID!, acá va la validación del correo...')
+    </script>
