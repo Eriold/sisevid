@@ -7,6 +7,7 @@ include('../model/User.php');
 include('../controller/ConnectionController.php');
 include('../controller/UserController.php');
 include('../controller/server.php');
+include('../view/user/validaterole.php');
 
 // Start global page
 global $activeHeader;
@@ -17,6 +18,19 @@ $titleDocument = 'Página de inicio';
 $sesionStart = true;
 $email = $password = '';
 $email_error = $password_error = '';
+
+
+$result = $conexion->query($query);
+$row = $result->fetch_assoc();
+
+if($result->num_rows > 0){
+  session_start();
+  $_SESSION['user'] = $email;
+  $_SESSION['rol'] = $row['rol'];
+  header("Location: ../view/index.php");
+}else{
+  header("Location: ../index.php");
+}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $inputEmail = trim($_POST["txtEmail"]);
@@ -33,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $password = $inputPassword;
     }
     if (empty($email_error) && empty($password_error)) {
-        $objUser = new User('', '', $password, $email, 0);
+        $objUser = new User('', '', $password, $email);
         $objUserConnetion = new UserController($objUser);
         $rowRes = $objUserConnetion->userLogin();
         $sesionStart = $rowRes;
@@ -42,6 +56,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
+
+if ()
 
 ?>
 

@@ -20,6 +20,8 @@ $menuCode_error = true;
 <head>
     <link rel="stylesheet" href="./assets/css/style.css">
     <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
+    <!– Permisos para acceder a reportes y tablas –>
+    <script src="C:/xampp/htdocs/sisevid/view/user/validateuser.js"></script>
 </head>
 <?php include('./components/head.php'); ?>
 

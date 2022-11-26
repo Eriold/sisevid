@@ -64,7 +64,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html lang="en">
 <?php include('../components/head.php') ?>
-
+<!– Permisos para crear usuarios –>
+<script src="C:/xampp/htdocs/sisevid/view/user/validateuser.js"></script>
 <body>
     <?php include('../components/header.php') ?>
     <div class="wrapper">

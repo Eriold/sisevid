@@ -96,10 +96,10 @@ INSERT INTO `chapter` (`idChapter`, `name`, `idTitle`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `condition`
+-- Estructura de tabla para la tabla `conditions`
 --
 
-CREATE TABLE `condition` (
+CREATE TABLE `conditions` (
   `idCondition` int(11) NOT NULL,
   `name` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -482,22 +482,31 @@ INSERT INTO `title` (`idTitle`, `name`) VALUES
 (0, 'NA'),
 (1, 'OBJETO, ÁMBITO DE APLICACIÓN Y'),
 (2, 'DE LAS CONDICIONES INSTITUCION'),
-(3, 'DE LA RENOVACIÓN DE CONDICIONE');
+(3, 'DE LA RENOVACIÓN DE CONDICIONES');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `user`
+-- Estructura de tabla para la tabla `users`
 --
 
-CREATE TABLE `user` (
+CREATE TABLE `users` (
   `idUser` int(11) NOT NULL,
   `user` varchar(30) NOT NULL,
   `password` varchar(30) NOT NULL,
-  `email` varchar(50) DEFAULT NULL,
-  `idRol` int(11) NOT NULL
+  `email` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla intermedia `users_roles` para manejar varios roles por usuario
+--
+
+CREATE TABLE `users_roles` (
+  `idUser` int(10) NOT NULL,
+  `idRol` int(10) NOT NULL
+);
 --
 -- Índices para tablas volcadas
 --
@@ -518,9 +527,9 @@ ALTER TABLE `chapter`
   ADD KEY `idTitle` (`idTitle`);
 
 --
--- Indices de la tabla `condition`
+-- Indices de la tabla `conditions`
 --
-ALTER TABLE `condition`
+ALTER TABLE `conditions`
   ADD PRIMARY KEY (`idCondition`);
 
 --
@@ -636,11 +645,10 @@ ALTER TABLE `title`
   ADD PRIMARY KEY (`idTitle`);
 
 --
--- Indices de la tabla `user`
+-- Indices de la tabla `users`
 --
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`idUser`),
-  ADD KEY `idRol` (`idRol`);
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`idUser`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -659,9 +667,9 @@ ALTER TABLE `chapter`
   MODIFY `idChapter` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT de la tabla `condition`
+-- AUTO_INCREMENT de la tabla `conditions`
 --
-ALTER TABLE `condition`
+ALTER TABLE `conditions`
   MODIFY `idCondition` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -763,7 +771,7 @@ ALTER TABLE `chapter`
 -- Filtros para la tabla `conditionprogram`
 --
 ALTER TABLE `conditionprogram`
-  ADD CONSTRAINT `conditionprogram_ibfk_1` FOREIGN KEY (`idCondition`) REFERENCES `condition` (`idCondition`),
+  ADD CONSTRAINT `conditionprogram_ibfk_1` FOREIGN KEY (`idCondition`) REFERENCES `conditions` (`idCondition`),
   ADD CONSTRAINT `conditionprogram_ibfk_2` FOREIGN KEY (`idConditionProgram`) REFERENCES `program` (`idProgram`);
 
 --
@@ -771,7 +779,7 @@ ALTER TABLE `conditionprogram`
 --
 ALTER TABLE `conditiontitle`
   ADD CONSTRAINT `conditiontitle_ibfk_1` FOREIGN KEY (`idConditionTitle`) REFERENCES `title` (`idTitle`),
-  ADD CONSTRAINT `conditiontitle_ibfk_2` FOREIGN KEY (`idCondition`) REFERENCES `condition` (`idCondition`);
+  ADD CONSTRAINT `conditiontitle_ibfk_2` FOREIGN KEY (`idCondition`) REFERENCES `conditions` (`idCondition`);
 
 --
 -- Filtros para la tabla `evidence`
@@ -789,7 +797,7 @@ ALTER TABLE `evidencetype`
 -- Filtros para la tabla `evidenceuser`
 --
 ALTER TABLE `evidenceuser`
-  ADD CONSTRAINT `evidenceuser_ibfk_1` FOREIGN KEY (`IdUser`) REFERENCES `user` (`idUser`),
+  ADD CONSTRAINT `evidenceuser_ibfk_1` FOREIGN KEY (`IdUser`) REFERENCES `users` (`idUser`),
   ADD CONSTRAINT `evidenceuser_ibfk_2` FOREIGN KEY (`idEvidenceUser`) REFERENCES `evidence` (`idEvidence`);
 
 --
@@ -836,11 +844,17 @@ ALTER TABLE `state`
   ADD CONSTRAINT `state_ibfk_1` FOREIGN KEY (`idEvidence`) REFERENCES `evidence` (`idEvidence`);
 
 --
--- Filtros para la tabla `user`
+-- Filtros para la tabla `users`
 --
-ALTER TABLE `user`
-  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`idRol`) REFERENCES `rol` (`idRol`);
-COMMIT;
+
+ALTER TABLE `users_roles`
+  ADD PRIMARY KEY (`idUser`,`idRol`)
+  ADD KEY `idUserRol`(`idUserRol`);
+
+ALTER TABLE `users_roles`
+  ADD CONSTRAINT `userrol_ibfk_1` FOREIGN KEY (`idRol`) REFERENCES `rol` (`idRol`),
+  ADD CONSTRAINT `userrol_ibfk_2` FOREIGN KEY (`idUser`) REFERENCES `users` (`idUser`);
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
