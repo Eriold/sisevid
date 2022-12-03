@@ -45,6 +45,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $observationEvidence = $inputEvidenceObservation;
     }
+    
+    if(isset($_POST['UploadEvidence'])){
+
+        $img = $_FILES['images']['name'];
+        $img_local = $_FILES['images']['tmp_name'];
+        $img_folder = "Save_File/";
+
+        if(move_uploaded_file($img_local, $img_folder.$img)){
+
+            ?>
+            <script>alert('Archivo Guardado con exito!');</script> 
+            <?php
+        }else{
+
+            ?>
+            <script>alert('Archivo no guardado');</script> 
+            <?php
+        }
+    }
 
     $dateEvidence = (string)(date('d-m-Y'));
     $dateModificationEvidence = (string)(date('d-m-Y'));
@@ -105,6 +124,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <label>Observación</label>
                             <input type="text" name="txtEvivdenceObservation" class="form-control <?php echo (!empty($observationEvidence_error)) ? 'is-invalid' : ''; ?>">
                             <span class="invalid-feedback"><?php echo $observationEvidence_error; ?></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Archivo</label>
+                            <input type="file" name="images" class="form-control btn btn-primary">
+                           <!-- <span class="invalid-feedback"><?php echo $observationEvidence_error; ?></span>-->
                         </div>
                         <div class="form-group">
                             <input type="submit" class="btn btn-primary" value="Enviar">

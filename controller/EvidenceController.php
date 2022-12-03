@@ -56,7 +56,7 @@ class EvidenceController
         $descriptionEvidence = $this->ojbEvidence->getDescriptionEvidence();
         //$query = "UPDATE evidence SET ($nameEvidence, $idArticle, $creationDate, $modificationDateEvidence, $observationEvidence, $descriptionEvidence) WHERE idEvidence ='$codeEvidence'";
         //$query = "UPDATE evidence SET name='$nameEvidence', idArticle='$idArticle', creationDate='$creationDate', modificationDate= '$modificationDateEvidence', observation= '$observationEvidence', description= '$descriptionEvidence' WHERE idEvidence ='$codeEvidence'";
-        $query = "UPDATE `evidence` SET `name` = '$nameEvidence',`idArticle` = '$idArticle', `creationDate` = '$creationDate', `modificationDate` = '$modificationDateEvidence', `observation` = '$observationEvidence', `description` = '$descriptionEvidence'  WHERE `evidence`.`idEvidence` = 10";
+        $query = "UPDATE `evidence` SET `name` = '$nameEvidence',`idArticle` = '$idArticle', `creationDate` = '$creationDate', `modificationDate` = '$modificationDateEvidence', `observation` = '$observationEvidence', `description` = '$descriptionEvidence'  WHERE `evidence`.`idEvidence` = $codeEvidence";
         $objEvidenceController = new ConnectionController();
         $objEvidenceController->openDataBase(LOCALHOST, USER, PASSWORD, DATABASE);
         $objEvidenceController->runCommandSQL($query);

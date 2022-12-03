@@ -18,7 +18,10 @@ $row = $objArticleConnection->allArticle();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $inputeEvidenceId = trim($_POST["txtEvivdenceId"]);
+    $inputeEvidenceId = trim($_POST["txtEvidenceId"]);
+    echo var_dump($_POST["txtEvidenceId"]);
+    echo var_dump($_POST["txtEvivdenceName"]);
+    echo var_dump(($_GET["id"]));
     if (empty($inputeEvidenceId)) {
         $evidenceId_error = "Debe ingresar un nombre de evidencia";
     } else {
@@ -56,10 +59,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $dateModificationEvidence = (string)(date('d-m-Y'));
 
     if (empty($evidenceName_error) && empty($evidenceArticle_error) && empty($observationEvidence_error) && empty($descriptionEvidence_error)) {
-        $objEvidence = new Evidence($evidenceId, $evidenceName, $evidenceArticle, $dateEvidence, $dateModificationEvidence, $observationEvidence, $descriptionEvidence);
+      /*  $objEvidence = new Evidence($evidenceName, $evidenceArticle,$evidenceId, $dateEvidence, $dateModificationEvidence, $observationEvidence, $descriptionEvidence);
         $objEvidenceConnection = new EvidenceController($objEvidence);
-        $objEvidenceConnection->update();
-        header("location: index.php");
+        $objEvidenceConnection->update();*/
+      //  header("location: index.php");
     }
 } else {
     if (isset($_GET["id"]) && !empty(trim($_GET["id"]))) {
@@ -79,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 
             
         } else {
-            header("location: ../error.php");
+          //  header("location: ../error.php");
         }
         }
     }
@@ -92,7 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <?php include('../components/head.php') ?>
 
 <body>
-    <?php include('../components/header.php') ?>
+    <!-- <?php include('../components/header.php') ?> -->
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
@@ -102,7 +105,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         <div class="form-group">
                             <label>ID Evidencia</label>
-                            <input type="text" name="txtEvivdenceId" class="form-control" value="<?php echo $evidenceId ?>" disabled>
+                            <input type="text" name="txtEvidenceId" class="form-control" value="<?php echo $evidenceId ?>" disabled>
+
                         </div>
                         <div class="form-group">
                             <label>Nombre</label>

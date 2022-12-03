@@ -12,7 +12,7 @@ $titleDocument = 'Página de borrado';
 if (isset($_POST["id"]) && !empty($_POST["id"])) {
 
     $IdEvidence = trim($_POST["id"]);
-    $ObjEvidence = new Evidence('','',$IdEvidence);
+    $ObjEvidence = new Evidence('','',$IdEvidence,'', '', '', '', '');
     $ObjEvidenceController = new EvidenceController($ObjEvidence);
     $ObjEvidenceController->delete();
     header("location: index.php");
