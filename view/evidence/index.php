@@ -52,15 +52,19 @@ $IdEvidencia_error = true;
                     include('../../controller/EvidenceController.php');
 
                     // Attempt select query execution
-                    $objEvidence = new Evidence('', '', '');
+                    $objEvidence = new Evidence('', '', '','', '','', '');
                     $objEvidenceConnection = new EvidenceController($objEvidence);
-                    $row = $objEvidenceConnection->read();
+                    $row = $objEvidenceConnection->readAll();
                     if ($row > 0) {
                         echo '<table class="table table-bordered table-striped">';
                         echo "<thead>";
                         echo "<tr>";
                         echo "<th>ID Evidencia</th>";
-                        echo "<th>Nombre</th>";
+                        echo "<th>Name</th>";
+                        echo "<th>Fecha Creación</th>";
+                        echo "<th>Fecha Modificación</th>";
+                        echo "<th>Descripción</th>";
+                        echo "<th>Observación</th>";
                         echo "<th>ID Artículo</th>";
                         echo "<th>Acciones</th>";
                         echo "</tr>";
@@ -72,6 +76,10 @@ $IdEvidencia_error = true;
                                     echo "<tr>";
                                     echo "<td>" . $res['idEvidence'] . "</td>";
                                     echo "<td>" . $res['name'] . "</td>";
+                                    echo "<td>" . $res['creationDate'] . "</td>";
+                                    echo "<td>" . $res['modificationDate'] . "</td>";
+                                    echo "<td>" . $res['observation'] . "</td>";
+                                    echo "<td>" . $res['description'] . "</td>";
                                     echo "<td>" . $res['idArticle'] . "</td>";
                                     echo "<td>";
                                     echo '<a href="read.php?id=' . $res['idEvidence'] . '" class="mr-3" title="Ver información" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
@@ -79,7 +87,7 @@ $IdEvidencia_error = true;
                                     echo '<a href="delete.php?id=' . $res['idEvidence'] . '" title="Borrar información" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
                                     echo "</td>";
                                     echo "</tr>";
-                                    if ($res['Idevidencias'] === null) {
+                                    if ($res['idEvidence'] === null) {
                                         $IdEvidencia_error = true;
                                     } else {
                                         $IdEvidencia_error = false;
@@ -89,6 +97,10 @@ $IdEvidencia_error = true;
                                 echo "<tr>";
                                 echo "<td>" . $res['idEvidence'] . "</td>";
                                 echo "<td>" . $res['name'] . "</td>";
+                                echo "<td>" . $res['creationDate'] . "</td>";
+                                echo "<td>" . $res['modificationDate'] . "</td>";
+                                echo "<td>" . $res['observation'] . "</td>";
+                                echo "<td>" . $res['description'] . "</td>";
                                 echo "<td>" . $res['idArticle'] . "</td>";
                                 echo "<td>";
                                 echo '<a href="read.php?id=' . $res['idEvidence'] . '" class="mr-3" title="Ver información" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';

@@ -94,17 +94,6 @@ if (!isset($_SESSION['id_user']) && !isset($_SESSION['name_user'])) {
     <li><a class="<?php echo $programs ?>" id="#program" href="<?php echo $load ?>view/program/index.php">Programas</a></li>
     <li><a class="<?php echo $school ?>" id="#school" href="<?php echo $load ?>view/school/index.php">Facultades</a></li>
     <li><a class="<?php echo $users ?>" id="#user" href="<?php echo $load ?>view/user/index.php">Usuarios</a></li>
-    <!-- <li class="dropdown">
-      <a href="#works" class="dropdown-toggle" data-toggle="dropdown">Menu con submenus <span class="caret"></span></a>
-      <ul class="dropdown-menu animated fadeInLeft" role="menu">
-        <div class="dropdown-header">Titulo del sub menu</div>
-        <li><a href="#pictures">item 1</a></li>
-        <li><a href="#videos">item 2</a></li>
-        <li><a href="#books">item 3</a></li>
-        <li><a href="#art">item 4</a></li>
-        <li><a href="#awards">item 5</a></li>
-      </ul>
-    </li> -->
     <li><a id="#close" href="<?php echo $load ?>controller/closesesseion.php">Cerrar sesión</a></li>
   </ul>
 </nav>
