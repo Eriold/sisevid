@@ -17,4 +17,15 @@ class RolUserController {
         $objRolUserController->runCommandSQL($query);
         $objRolUserController->closeDataBase();
     }
+
+    public function findRoles() {
+        $idUser = $this->objRolUser->getIdUser();
+        $query = "SELECT roluser.idRol FROM roluser WHERE roluser.idUser = $idUser";
+        $objRolUserController = new ConnectionController();
+        $objRolUserController->openDataBase(LOCALHOST, USER, PASSWORD, DATABASE);
+        $res = $objRolUserController->runSelect($query);
+        $row = $res->fetch_all();
+        $objRolUserController->closeDataBase();
+        return $row[0];
+    }
 }

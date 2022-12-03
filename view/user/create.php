@@ -1,9 +1,7 @@
 <?php
 include('../../model/User.php');
-include('../../model/RolUser.php');
 include('../../controller/ConnectionController.php');
 include('../../controller/UserController.php');
-include('../../controller/RolUserControler.php');
 include('../../controller/server.php');
 
 global $activeHeader;
@@ -61,7 +59,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $objUserConnetion->create();
 
         foreach($idRoles as $role) {
-            echo $role;
             $objRolUser = new RolUser($role, $userCode);
             $objRolUserController = new RolUserController($objRolUser);
             $objRolUserController->createListRol();
