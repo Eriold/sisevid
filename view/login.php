@@ -73,10 +73,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <span class="invalid-feedback text-white"><?php echo $email_error; ?></span>
                     </div>
                     <div class="form-group" id="contrasena-group">
-                        <input type="password" class="form-control <?php echo (!empty($password_error)) ? 'is-invalid' : ''; ?>" placeholder="Contraseña" name="txtPassword" />
-                        <span class="invalid-feedback text-white"><?php echo $password_error; ?></span>
+                        <!-- <input type="password" required onblur="javascript:Validar();"  class="form-control <?php echo (!empty($password_error)) ? 'is-invalid' : ''; ?>" placeholder="Contraseña" name="txtPassword" /> -->
+                        <input type="password" class="form-control" placeholder="Contraseña" name="txtPassword" />
+
+                        <!-- <span class="invalid-feedback text-white"><?php echo $password_error; ?></span> -->
+                        <span id="message"></span>
                     </div>
-                    <button type="submit" class="btn btn-primary my-2"><i class="fas fa-sign-in-alt"></i> Ingresar </button>
+                    <button type="submit" onclick="checkPassword();" class="btn btn-primary my-2"><i class="fas fa-sign-in-alt"></i> Ingresar </button>
                 </form>
                 <?php
                 if (!$sesionStart == true) {
@@ -96,5 +99,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </div>
     <script>
-        console.log('HOLA DAVID!, acá va la validación del correo...')
+
+        function checkPassword() {
+            let validPassword = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&*])(?=.{8,})/;
+            let password = document.querySelector('#txtPassword').value;
+            let password = document.querySelector('#message').value;
+
+             if(validPassword.test(password)){
+
+                message.textContent = 'Clave correcta';
+
+             }else{
+                message.textContent = 'La contraseña debe tener mayusculas, un número';
+                
+             }
+            
+        }
+
+
     </script>
