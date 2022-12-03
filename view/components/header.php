@@ -22,21 +22,36 @@ global $activeHeader;
 
 $home = $evidence = $menu = $programs = $school = $users = '';
 $evidence_active = $menu_active = $programs_active = $school_active = $users_active = false;
-
+//show navigation
 foreach($_SESSION['rol_list'] as $rol){
-  if($rol == '1') {
+  if($rol[0] == '1') {
     $users_active = true;
   }
-  if($rol == '2') {
+  if($rol[0] == '2') {
     $programs_active = true;
   }
-  if($rol == '3') {
+  if($rol[0] == '3') {
     $evidence_active = true;
   }
-  if($rol == '4') {
+  if($rol[0] == '4') {
     $school_active = true;
   }
 }
+// access routes
+$url = $_SERVER["REQUEST_URI"];
+if(strpos($url, 'user') && !$users_active){
+  header('Location:' . $load . 'view/index.php');
+}
+if(strpos($url, 'program') && !$programs_active){
+  header('Location:' . $load . 'view/index.php');
+}
+if(strpos($url, 'evidence') && !$evidence_active){
+  header('Location:' . $load . 'view/index.php');
+}
+if(strpos($url, 'school') && !$school_active){
+  header('Location:' . $load . 'view/index.php');
+}
+
 
 switch ($activeHeader) {
   case '_HOME':

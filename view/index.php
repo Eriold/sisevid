@@ -26,8 +26,9 @@ $_SESSION['rol_list'] = $row;
 </body>
 <div class="wrapper2">
     <h1>Hola <span style="color: blue"><?php echo $_SESSION['name_user'] ?></span> Bienvenido a sisevid </h1>
-    <?php foreach($_SESSION['rol_list'] as $rol){
-        echo $rol;
+    <?php
+    foreach($_SESSION['rol_list'] as $rol){
+        echo $rol[0];
     }?>
 </div>
 

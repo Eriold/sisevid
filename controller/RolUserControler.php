@@ -24,8 +24,8 @@ class RolUserController {
         $objRolUserController = new ConnectionController();
         $objRolUserController->openDataBase(LOCALHOST, USER, PASSWORD, DATABASE);
         $res = $objRolUserController->runSelect($query);
-        $row = $res->fetch_all();
+        $row = $res->fetch_all(MYSQLI_BOTH);
         $objRolUserController->closeDataBase();
-        return $row[0];
+        return $row;
     }
 }
