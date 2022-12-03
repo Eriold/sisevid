@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-10-2022 a las 17:16:26
--- Versión del servidor: 10.4.25-MariaDB
--- Versión de PHP: 8.1.10
+-- Tiempo de generación: 03-12-2022 a las 21:20:08
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -135,8 +135,21 @@ CREATE TABLE `conditiontitle` (
 CREATE TABLE `evidence` (
   `idEvidence` int(11) NOT NULL,
   `name` varchar(30) NOT NULL,
-  `idArticle` int(11) NOT NULL
+  `idArticle` int(11) NOT NULL,
+  `creationDate` date DEFAULT NULL,
+  `fileRoute` varchar(4000) NOT NULL,
+  `modificationDate` date DEFAULT NULL,
+  `observation` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `evidence`
+--
+
+INSERT INTO `evidence` (`idEvidence`, `name`, `idArticle`, `creationDate`, `fileRoute`, `modificationDate`, `observation`, `description`) VALUES
+(4, 'Ensayo 4am', 10, '0000-00-00', '', '0000-00-00', 'Uno del primero', 'Esto es un test'),
+(5, 'Ensayo evidencia', 8, '0000-00-00', '', '0000-00-00', 'Faltaron literales', 'Esto es una evidencia para el profe');
 
 -- --------------------------------------------------------
 
@@ -159,10 +172,6 @@ CREATE TABLE `evidencetype` (
 CREATE TABLE `evidenceuser` (
   `idEvidenceUser` int(11) NOT NULL,
   `IdUser` int(11) NOT NULL,
-  `creationDate` date DEFAULT NULL,
-  `author` varchar(50) DEFAULT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  `observation` varchar(255) DEFAULT NULL,
   `userRegister` varchar(50) DEFAULT NULL,
   `userVerify` varchar(50) DEFAULT NULL,
   `userValid` varchar(50) DEFAULT NULL
@@ -217,6 +226,7 @@ CREATE TABLE `literal` (
 --
 
 INSERT INTO `literal` (`idLiteral`, `description`, `idArticle`) VALUES
+(0, 'NA', 0),
 (1, 'Mecanismos de selección y evaluación de estudiantes y profesores\'', 3),
 (2, 'Estructura administrativa y académica', 3),
 (3, 'Cultura de la autoevaluación', 3),
@@ -299,25 +309,6 @@ INSERT INTO `literal` (`idLiteral`, `description`, `idArticle`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `menu`
---
-
-CREATE TABLE `menu` (
-  `idMenu` int(11) NOT NULL,
-  `name` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `menu`
---
-
-INSERT INTO `menu` (`idMenu`, `name`) VALUES
-(1, 'Gato'),
-(3, 'Conejo');
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `numeral`
 --
 
@@ -332,6 +323,7 @@ CREATE TABLE `numeral` (
 --
 
 INSERT INTO `numeral` (`idNumeral`, `name`, `idLiteral`) VALUES
+(0, 'NA', 0),
 (1, 'Derechos y deberes de los estudiantes.', 13),
 (2, 'Condiciones para obtener distinciones e incentivos.', 13),
 (3, 'Políticas, criterios, requisitos y procesos de inscripción, admisión, ingreso, reingreso, transferencias, matrícula y evaluación.', 13),
@@ -368,6 +360,7 @@ CREATE TABLE `paragraph` (
 --
 
 INSERT INTO `paragraph` (`idParagraph`, `idArticle`, `description`) VALUES
+(0, 0, 'NA'),
 (12, 2, 'Para todos los efectos de la presente resolución, se entiende por “institución” o “instituciones”, las instituciones de educación superior y aquellas habilitadas por la ley para la oferta y desarrollo de programas académicos de educación superior. '),
 (18, 8, 'Cuando la institución desarrolle actividades con entidades, empresas, organizaciones u otros entes que participen en el plan de estudios o faciliten espacios de práctica requeridos en el mismo, el reglamento deberá definir las políticas y criterios de admisión, permanencia y evaluación, teniendo en consideración dicho asocio y de acuerdo con los resultados de aprendizaje esperados.'),
 (110, 10, 'La institución deberá establecer procesos y medios orientados a la mejora del desempeño académico y la formación integral del estudiante, que le permita el tránsito de la educación secundaria o media a la educación superior, tomando como insumo la información cualitativa y cuantitativa de los estudiantes.'),
@@ -416,7 +409,8 @@ INSERT INTO `rol` (`idRol`, `name`) VALUES
 (1, 'Administrador(a) del Sistema'),
 (2, 'Verificador(a)'),
 (3, 'Validador(a)'),
-(4, 'Administrativo(a)');
+(4, 'Administrativo(a)'),
+(5, 'No_permisos');
 
 -- --------------------------------------------------------
 
@@ -428,6 +422,26 @@ CREATE TABLE `rolmenu` (
   `idRol` int(11) NOT NULL,
   `idRolMenu` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `roluser`
+--
+
+CREATE TABLE `roluser` (
+  `idRol` int(11) NOT NULL,
+  `idUser` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `roluser`
+--
+
+INSERT INTO `roluser` (`idRol`, `idUser`) VALUES
+(1, 1048018001),
+(2, 123456789),
+(3, 123456789);
 
 -- --------------------------------------------------------
 
@@ -497,6 +511,14 @@ CREATE TABLE `user` (
   `email` varchar(50) DEFAULT NULL,
   `idRol` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `user`
+--
+
+INSERT INTO `user` (`idUser`, `user`, `password`, `email`, `idRol`) VALUES
+(123456789, 'Usuario 2 roles', '123456', 'usuario2roles@gmail.com', 5),
+(1048018001, 'Daniel', '123456', 'daniel@correo.com', 1);
 
 --
 -- Índices para tablas volcadas
@@ -577,12 +599,6 @@ ALTER TABLE `literal`
   ADD KEY `idArticle` (`idArticle`);
 
 --
--- Indices de la tabla `menu`
---
-ALTER TABLE `menu`
-  ADD PRIMARY KEY (`idMenu`);
-
---
 -- Indices de la tabla `numeral`
 --
 ALTER TABLE `numeral`
@@ -615,6 +631,13 @@ ALTER TABLE `rol`
 ALTER TABLE `rolmenu`
   ADD PRIMARY KEY (`idRol`,`idRolMenu`),
   ADD KEY `idRolMenu` (`idRolMenu`);
+
+--
+-- Indices de la tabla `roluser`
+--
+ALTER TABLE `roluser`
+  ADD PRIMARY KEY (`idRol`,`idUser`),
+  ADD KEY `idUser` (`idUser`);
 
 --
 -- Indices de la tabla `section`
@@ -668,7 +691,7 @@ ALTER TABLE `condition`
 -- AUTO_INCREMENT de la tabla `evidence`
 --
 ALTER TABLE `evidence`
-  MODIFY `idEvidence` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idEvidence` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `evidencetype`
@@ -692,25 +715,19 @@ ALTER TABLE `filetype`
 -- AUTO_INCREMENT de la tabla `literal`
 --
 ALTER TABLE `literal`
-  MODIFY `idLiteral` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
-
---
--- AUTO_INCREMENT de la tabla `menu`
---
-ALTER TABLE `menu`
-  MODIFY `idMenu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idLiteral` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
 -- AUTO_INCREMENT de la tabla `numeral`
 --
 ALTER TABLE `numeral`
-  MODIFY `idNumeral` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `idNumeral` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `paragraph`
 --
 ALTER TABLE `paragraph`
-  MODIFY `idParagraph` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
+  MODIFY `idParagraph` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
 
 --
 -- AUTO_INCREMENT de la tabla `program`
@@ -722,7 +739,7 @@ ALTER TABLE `program`
 -- AUTO_INCREMENT de la tabla `rol`
 --
 ALTER TABLE `rol`
-  MODIFY `idRol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idRol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `section`
@@ -826,8 +843,14 @@ ALTER TABLE `program`
 -- Filtros para la tabla `rolmenu`
 --
 ALTER TABLE `rolmenu`
-  ADD CONSTRAINT `rolmenu_ibfk_1` FOREIGN KEY (`idRol`) REFERENCES `rol` (`idRol`),
-  ADD CONSTRAINT `rolmenu_ibfk_2` FOREIGN KEY (`idRolMenu`) REFERENCES `menu` (`idMenu`);
+  ADD CONSTRAINT `rolmenu_ibfk_1` FOREIGN KEY (`idRol`) REFERENCES `rol` (`idRol`);
+
+--
+-- Filtros para la tabla `roluser`
+--
+ALTER TABLE `roluser`
+  ADD CONSTRAINT `roluser_ibfk_1` FOREIGN KEY (`idRol`) REFERENCES `rol` (`idRol`),
+  ADD CONSTRAINT `roluser_ibfk_2` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`);
 
 --
 -- Filtros para la tabla `state`
