@@ -1,7 +1,9 @@
 <?php
 include('../../model/User.php');
+include('../../model/RolUser.php');
 include('../../controller/ConnectionController.php');
 include('../../controller/UserController.php');
+include('../../controller/RolUserControler.php');
 include('../../controller/server.php');
 
 global $activeHeader;
