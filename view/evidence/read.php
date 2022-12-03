@@ -9,14 +9,14 @@ $activeHeader = '_EVIDENCE';
 global $titleDocument;
 $titleDocument = 'Página de guardado';
 
-$evidenceId = $evidenceName = $evidenceArticle = '';
+$evidenceId = $evidenceName = $evidenceArticle = $dateEvidence = $dateModificationEvidence = $observationEvidence = $descriptionEvidence = '';
 
-$objArticle = new Evidence('', '', '');
+$objArticle = new Evidence('', '', '', '', '', '', '');
 $objArticleConnection = new EvidenceController($objArticle);
 $row = $objArticleConnection->allArticle();
 
 if ($IdEvidence = trim($_GET["id"])) {
-    $objEvidence = new Evidence("", "", $IdEvidence);
+    $objEvidence = new Evidence("", "", $IdEvidence,'','','','');
     $objEvidenceController = new EvidenceController($objEvidence);
     $resGet = $objEvidenceController->read();
     if (count($resGet) > 0) {
@@ -24,6 +24,10 @@ if ($IdEvidence = trim($_GET["id"])) {
             $evidenceId = $item["idEvidence"];
             $evidenceName = $item["name"];
             $evidenceArticle = $item["idArticle"];
+            $dateEvidence = $item["creationDate"];
+            $dateModificationEvidence = $item["modificationDate"];
+            $observationEvidence = $item["observation"];
+            $descriptionEvidence = $item["description"];
         }
     } else {
         header("location: ../error.php");

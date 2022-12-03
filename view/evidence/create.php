@@ -9,10 +9,10 @@ $activeHeader = '_EVIDENCE';
 global $titleDocument;
 $titleDocument = 'Página de guardado';
 
-$evidenceName = $evidenceArticle = '';
-$evidenceName_error = $evidenceArticle_error = '';
+$evidenceName = $evidenceArticle = $dateEvidence = $dateModificationEvidence = $observationEvidence = $descriptionEvidence = '';
+$evidenceName_error = $evidenceArticle_error = $dateEvidence_error = $dateModificationEvidence_error = $observationEvidence_error = $descriptionEvidence_error = '';
 
-$objArticle = new Evidence('', '', '');
+$objArticle = new Evidence('', '', '', '', '', '', '');
 $objArticleConnection = new EvidenceController($objArticle);
 $row = $objArticleConnection->allArticle();
 
@@ -32,10 +32,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $evidenceArticle = $inputEvidenceArticle;
     }
 
-    if (empty($evidenceName_error) && empty($evidenceArticle_error)) {
-        $objEvidence = new Evidence($evidenceName, $evidenceArticle, '');
+    $inputEvidenceDescription = trim($_POST["txtEvivdenceDescription"]);
+    if (empty($inputEvidenceDescription)) {
+        $descriptionEvidence_error = 'Debe ingresar una descripcion de la evidencia';
+    } else {
+        $descriptionEvidence = $inputEvidenceDescription;
+    }
+
+    $inputEvidenceObservation = trim($_POST["txtEvivdenceObservation"]);
+    if (empty($inputEvidenceObservation)) {
+        $observationEvidence_error = "Debe ingresar una observacion de la evidencia";
+    } else {
+        $observationEvidence = $inputEvidenceObservation;
+    }
+    
+    $img = $_FILES['images']['name'];
+    $img_local = $_FILES['images']['tmp_name'];
+    $img_folder = "../../Save_File/";
+
+    $dateEvidence = (string)(date('d-m-Y'));
+    $dateModificationEvidence = (string)(date('d-m-Y'));
+
+    if (empty($evidenceName_error) && empty($evidenceArticle_error) && empty($observationEvidence_error) && empty($descriptionEvidence_error)) {
+        $objEvidence = new Evidence($evidenceName, $evidenceArticle, '', $dateEvidence, $dateModificationEvidence, $observationEvidence, $descriptionEvidence);
         $objEvidenceConnection = new EvidenceController($objEvidence);
         $objEvidenceConnection->create();
+        move_uploaded_file($img_local, $img_folder . $img);
         header("location: index.php");
     }
 }
@@ -54,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="col-md-12">
                     <h2 class="mt-5">Registrar Evidencia</h2>
                     <p>Debes completar el formulario para registrar evidencias</p>
-                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <label>Nombre</label>
                             <input type="text" name="txtEvivdenceName" class="form-control <?php echo (!empty($evidenceName_error)) ? 'is-invalid' : ''; ?>">
@@ -78,6 +100,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <span class="invalid-feedback d-block"><?php echo $evidenceArticle_error; ?></span>
                             </div>
                             <span class="invalid-feedback"><?php echo $name_err; ?></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Descripción</label>
+                            <input type="text" name="txtEvivdenceDescription" class="form-control <?php echo (!empty($descriptionEvidence_error)) ? 'is-invalid' : ''; ?>">
+                            <span class="invalid-feedback"><?php echo $descriptionEvidence_error; ?></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Observación</label>
+                            <input type="text" name="txtEvivdenceObservation" class="form-control <?php echo (!empty($observationEvidence_error)) ? 'is-invalid' : ''; ?>">
+                            <span class="invalid-feedback"><?php echo $observationEvidence_error; ?></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Archivo</label>
+                            <input type="file" name="images" class="form-control btn btn-primary">
+                            <!-- <span class="invalid-feedback"><?php echo $observationEvidence_error; ?></span>-->
                         </div>
                         <div class="form-group">
                             <input type="submit" class="btn btn-primary" value="Enviar">
