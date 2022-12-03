@@ -59,10 +59,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $dateModificationEvidence = (string)(date('d-m-Y'));
 
     if (empty($evidenceName_error) && empty($evidenceArticle_error) && empty($observationEvidence_error) && empty($descriptionEvidence_error)) {
-      /*  $objEvidence = new Evidence($evidenceName, $evidenceArticle,$evidenceId, $dateEvidence, $dateModificationEvidence, $observationEvidence, $descriptionEvidence);
+      $objEvidence = new Evidence($evidenceName, $evidenceArticle,$evidenceId, $dateEvidence, $dateModificationEvidence, $observationEvidence, $descriptionEvidence);
         $objEvidenceConnection = new EvidenceController($objEvidence);
-        $objEvidenceConnection->update();*/
-      //  header("location: index.php");
+        $objEvidenceConnection->update();
+      header("location: index.php");
     }
 } else {
     if (isset($_GET["id"]) && !empty(trim($_GET["id"]))) {
