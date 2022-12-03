@@ -1,4 +1,7 @@
 <?php
+if(empty($_SESSION['id_user'])) {
+  session_start();
+}
 $segments = isset($_SERVER['PHP_SELF']) ? $_SERVER['PHP_SELF'] : '';
 // Print slashes
 $res = preg_replace('/[a-z,.]/', '', $segments);
@@ -10,9 +13,45 @@ if (count($testArray) > 3) {
     $load = '../' . $load;
   }
 }
+if (!isset($_SESSION['id_user']) && !isset($_SESSION['name_user'])) {
+  header('Location:' . $load . 'index.php');
+  exit;
+}
+
 global $activeHeader;
 
 $home = $evidence = $menu = $programs = $school = $users = '';
+$evidence_active = $menu_active = $programs_active = $school_active = $users_active = false;
+//show navigation
+foreach($_SESSION['rol_list'] as $rol){
+  if($rol[0] == '1') {
+    $users_active = true;
+  }
+  if($rol[0] == '2') {
+    $programs_active = true;
+  }
+  if($rol[0] == '3') {
+    $evidence_active = true;
+  }
+  if($rol[0] == '4') {
+    $school_active = true;
+  }
+}
+// access routes
+$url = $_SERVER["REQUEST_URI"];
+if(strpos($url, 'user') && !$users_active){
+  header('Location:' . $load . 'view/index.php');
+}
+if(strpos($url, 'program') && !$programs_active){
+  header('Location:' . $load . 'view/index.php');
+}
+if(strpos($url, 'evidence') && !$evidence_active){
+  header('Location:' . $load . 'view/index.php');
+}
+if(strpos($url, 'school') && !$school_active){
+  header('Location:' . $load . 'view/index.php');
+}
+
 
 switch ($activeHeader) {
   case '_HOME':
@@ -71,11 +110,7 @@ switch ($activeHeader) {
     $school = '';
     $users = '';
 }
-session_start();
-if (!isset($_SESSION['id_user']) && !isset($_SESSION['name_user'])) {
-  header('Location:' . $load . 'index.php');
-  exit;
-}
+
 ?>
 
 <nav class="navbar navbar-inverse fixed-top" id="sidebar-wrapper" role="navigation">
@@ -89,11 +124,19 @@ if (!isset($_SESSION['id_user']) && !isset($_SESSION['name_user'])) {
       </div>
     </div>
     <li><a class="<?php echo $home ?>" id="#home" href="<?php echo $load ?>view/index.php">Inicio</a></li>
+<<<<<<< HEAD
     <li><a class="<?php echo $evidence ?>" id="#evidence" href="<?php echo $load ?>view/evidence/index.php">Evidencia</a></li>
     <li><a class="<?php echo $menu ?>" id="#menu" href="<?php echo $load ?>view/menu/index.php">Menu</a></li>
     <li><a class="<?php echo $programs ?>" id="#program" href="<?php echo $load ?>view/program/index.php">Programas</a></li>
     <li><a class="<?php echo $school ?>" id="#school" href="<?php echo $load ?>view/school/index.php">Facultades</a></li>
     <li><a class="<?php echo $users ?>" id="#user" href="<?php echo $load ?>view/user/index.php">Usuarios</a></li>
+=======
+    <?php if($evidence_active == true) echo '<li><a class="'.$evidence.'" id="#evidence" href="'.$load.'view/evidence/index.php">Evidencia</a></li>'?>
+    <?php if($menu_active == true) echo '<li><a class="'.$menu.'" id="#menu" href="'.$load.'view/menu/index.php">Menu</a></li>'?>
+    <?php if($programs_active == true) echo '<li><a class="'.$programs.'" id="#program" href="'.$load.'view/program/index.php">Programas</a></li>'?>
+    <?php if($school_active == true) echo '<li><a class="'.$school.'" id="#school" href="'.$load.'view/school/index.php">Facultades</a></li>'?>
+    <?php if($users_active == true) echo '<li><a class="'.$users.'" id="#user" href="'.$load.'view/user/index.php">Usuarios</a></li>'?>
+>>>>>>> feature/permissions-with-role
     <li><a id="#close" href="<?php echo $load ?>controller/closesesseion.php">Cerrar sesión</a></li>
   </ul>
 </nav>
