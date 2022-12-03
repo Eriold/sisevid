@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $segments = isset($_SERVER['PHP_SELF']) ? $_SERVER['PHP_SELF'] : '';
 // Print slashes
 $res = preg_replace('/[a-z,.]/', '', $segments);
@@ -10,6 +12,11 @@ if (count($testArray) > 3) {
     $load = '../' . $load;
   }
 }
+if (!isset($_SESSION['id_user']) && !isset($_SESSION['name_user'])) {
+  header('Location:' . $load . 'index.php');
+  exit;
+}
+
 global $activeHeader;
 
 $home = $evidence = $menu = $programs = $school = $users = '';
@@ -71,11 +78,7 @@ switch ($activeHeader) {
     $school = '';
     $users = '';
 }
-session_start();
-if (!isset($_SESSION['id_user']) && !isset($_SESSION['name_user'])) {
-  header('Location:' . $load . 'index.php');
-  exit;
-}
+
 ?>
 
 <nav class="navbar navbar-inverse fixed-top" id="sidebar-wrapper" role="navigation">
@@ -94,17 +97,6 @@ if (!isset($_SESSION['id_user']) && !isset($_SESSION['name_user'])) {
     <li><a class="<?php echo $programs ?>" id="#program" href="<?php echo $load ?>view/program/index.php">Programas</a></li>
     <li><a class="<?php echo $school ?>" id="#school" href="<?php echo $load ?>view/school/index.php">Facultades</a></li>
     <li><a class="<?php echo $users ?>" id="#user" href="<?php echo $load ?>view/user/index.php">Usuarios</a></li>
-    <!-- <li class="dropdown">
-      <a href="#works" class="dropdown-toggle" data-toggle="dropdown">Menu con submenus <span class="caret"></span></a>
-      <ul class="dropdown-menu animated fadeInLeft" role="menu">
-        <div class="dropdown-header">Titulo del sub menu</div>
-        <li><a href="#pictures">item 1</a></li>
-        <li><a href="#videos">item 2</a></li>
-        <li><a href="#books">item 3</a></li>
-        <li><a href="#art">item 4</a></li>
-        <li><a href="#awards">item 5</a></li>
-      </ul>
-    </li> -->
     <li><a id="#close" href="<?php echo $load ?>controller/closesesseion.php">Cerrar sesión</a></li>
   </ul>
 </nav>
