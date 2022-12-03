@@ -124,19 +124,11 @@ switch ($activeHeader) {
       </div>
     </div>
     <li><a class="<?php echo $home ?>" id="#home" href="<?php echo $load ?>view/index.php">Inicio</a></li>
-<<<<<<< HEAD
-    <li><a class="<?php echo $evidence ?>" id="#evidence" href="<?php echo $load ?>view/evidence/index.php">Evidencia</a></li>
-    <!-- <li><a class="<?php echo $menu ?>" id="#menu" href="<?php echo $load ?>view/menu/index.php">Menu</a></li> -->
-    <li><a class="<?php echo $programs ?>" id="#program" href="<?php echo $load ?>view/program/index.php">Programas</a></li>
-    <li><a class="<?php echo $school ?>" id="#school" href="<?php echo $load ?>view/school/index.php">Facultades</a></li>
-    <li><a class="<?php echo $users ?>" id="#user" href="<?php echo $load ?>view/user/index.php">Usuarios</a></li>
-=======
     <?php if($evidence_active == true) echo '<li><a class="'.$evidence.'" id="#evidence" href="'.$load.'view/evidence/index.php">Evidencia</a></li>'?>
     <?php if($menu_active == true) echo '<li><a class="'.$menu.'" id="#menu" href="'.$load.'view/menu/index.php">Menu</a></li>'?>
     <?php if($programs_active == true) echo '<li><a class="'.$programs.'" id="#program" href="'.$load.'view/program/index.php">Programas</a></li>'?>
     <?php if($school_active == true) echo '<li><a class="'.$school.'" id="#school" href="'.$load.'view/school/index.php">Facultades</a></li>'?>
     <?php if($users_active == true) echo '<li><a class="'.$users.'" id="#user" href="'.$load.'view/user/index.php">Usuarios</a></li>'?>
->>>>>>> feature/permissions-with-role
     <li><a id="#close" href="<?php echo $load ?>controller/closesesseion.php">Cerrar sesión</a></li>
   </ul>
 </nav>
