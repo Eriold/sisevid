@@ -66,20 +66,5 @@ $menuCode_error = true;
       </div>
     </a>
   </li>
-  <li>
-    <a href="" class="card">
-      <img src="https://imgur.com/NSCtvg8.jpg" class="card__image" alt="" />
-      <div class="card__overlay">
-        <div class="card__header">
-          <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                 
-          <div class="card__header-text">
-            <h3 class="card__title">Andres Zapata</h3>
-            <span class="card__status">Desarrollador</span>
-          </div>          
-        </div>
-        <p class="card__description">Estudiante por los laditos y gamer :v</p>
-      </div>
-    </a>
-  </li>    
 </ul>
 </body>
